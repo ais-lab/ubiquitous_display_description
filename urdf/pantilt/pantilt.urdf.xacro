@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+  xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+  xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+  xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+  name="pantilt" >
+
+  <xacro:property name="base_to_box_height" value="0.065"/>
+  <xacro:property name="box_to_proj_height" value="0.17"/>
+
+  <material name="red" >
+    <color rgba="0.7 0.0 0.7 1.0" />
+  </material>
+  <material name="blue" >
+    <color rgba="0.0 0.7 0.7 1.0" />
+  </material>
+  <material name="green" >
+    <color rgba="0.0 0.7 0.7 1.0" />
+  </material>
+  <material name="gray" >
+    <color rgba="0.7 0.7 0.7 1.0" />
+  </material>
+
+  <xacro:macro name="pantilt_name" params="name"> 
+    <link name="${name}base_link" >
+    </link>
+    <link name="${name}box_link" >
+      <visual>down processing monitor complete
+done
+
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.07 0.085 0.065" />
+        </geometry>
+        <material name="gray"/>
+      </visual>
+    </link>
+    <link name="${name}plate_link">
+      <visual>
+        <origin xyz="-0.075 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.35 0.095 0.003" />
+        </geometry>
+        <material name="gray"/>
+      </visual>
+    </link>
+    <link name="left_pt_pillars" >
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.01 0.05 0.20" />
+        </geometry>
+        <material name="gray" />
+      </visual>
+    </link>
+    <link name="right_pt_pillars" >
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.01 0.05 0.20" />
+        </geometry>
+        <material name="gray" />
+      </visual>
+    </link>
+    <link name="${name}projector_link">
+      <visual>
+        <origin xyz="0.07 0.037 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.24 0.17 0.07" />
+        </geometry>
+        <material name="gray"/>
+      </visual>
+    </link>
+
+    <joint name="${name}base_joint" type="fixed">
+      <parent link="${name}base_link"/>
+      <child link="${name}box_link"/>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
+    <!--name of pan_joint and tilt_joint depend pantilt.yaml-->
+    <joint name="pan_joint" type="revolute">
+      <parent link="${name}box_link"/>
+      <child link="${name}plate_link"/>
+      <origin xyz="0 0 ${base_to_box_height/2}" rpy="0 0 0" />
+      <axis xyz="0 0 1" />
+      <limit lower="0" upper="2" effort="1" velocity="1"/>
+    </joint>
+    <joint name="ud_pt_plate_link_to_left_pt_pillars" type="fixed">
+      <parent link="${name}plate_link"/>
+      <child link="left_pt_pillars"/>
+      <origin xyz="0.09 0 0.1" rpy="0 0 0" />
+    </joint>
+    <joint name="ud_pt_plate_link_to_right_pt_pillars" type="fixed">
+      <parent link="${name}plate_link"/>
+      <child link="right_pt_pillars"/>
+      <origin xyz="-0.24 0 0.1" rpy="0 0 0" />
+    </joint>
+    <joint name="tilt_joint" type="revolute">
+      <parent link="${name}plate_link"/>
+      <child link="${name}projector_link"/>
+      <origin xyz="0 0 ${box_to_proj_height}" rpy="0 0 3.14" />
+      <axis xyz="1 0 0" />
+      <limit lower="0" upper="2" effort="1" velocity="1"/>
+    </joint>
+
+  </xacro:macro>
+
+  <xacro:pantilt_name name="ud_pt_"/>
+</robot>

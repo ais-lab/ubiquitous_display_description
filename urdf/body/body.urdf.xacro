@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       name="body" >
+
+  <!-- Definition of various sizes -->
+  <xacro:property name="bottom_pillar_height" value="0.1"/>
+  <xacro:property name="middle_pillar_height" value="0.157"/>
+  <xacro:property name="top_pillar_height" value="0.435"/>
+  <xacro:property name="pillar_radius" value="0.01"/>
+  <xacro:property name="pillar_offset_x" value="0.21"/>
+  <xacro:property name="pillar_offset_y" value="0.06"/>
+  <xacro:property name="plate_len_x" value="0.5"/>
+  <xacro:property name="plate_len_y" value="0.2"/>
+  <xacro:property name="plate_len_z" value="0.004"/>
+  <xacro:property name="bar_len_x" value="0.18"/>
+  <xacro:property name="bar_len_y" value="0.02"/>
+  <xacro:property name="bar_len_z" value="0.02"/>
+  <xacro:property name="adjuster_width" value="0.05"/>
+  <xacro:property name="adjuster_offset_x" value="0.3"/>
+  <xacro:property name="hokuyo_offset_x" value="-0.05"/>
+  <xacro:property name="hokuyo_offset_z" value="0.037"/>
+
+  <!-- Definition of colors -->
+  <material name="black">
+    <color rgba="0 0 0 1"/>
+  </material>
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+
+  <!-- Templates -->
+  <xacro:macro name="pillar_template" params="height origin_x origin_y">
+    <visual>
+      <geometry>
+        <cylinder length="${height}" radius="${pillar_radius}"/>
+      </geometry>
+      <origin xyz="${origin_x} ${origin_y} ${height/2}"/>
+      <material name="black"/>
+    </visual>
+  </xacro:macro>
+
+  <xacro:macro name="plate_template" params="name">
+    <link name="${name}_plate_link">
+      <visual>
+        <geometry>
+          <box size="${plate_len_x} ${plate_len_y} ${plate_len_z}"/>
+        </geometry>
+        <origin xyz="0 0 -${plate_len_z/2}"/>
+        <material name="white"/>
+      </visual>
+    </link>
+  </xacro:macro>
+  
+  <xacro:macro name="tower_template" params="name pillar_height">
+    <link name="${name}_pillars_link">
+      <xacro:pillar_template height="${pillar_height}" origin_x="${pillar_offset_x}" origin_y="${pillar_offset_y}"/>
+      <xacro:pillar_template height="${pillar_height}" origin_x="${-pillar_offset_x}" origin_y="${pillar_offset_y}"/>
+      <xacro:pillar_template height="${pillar_height}" origin_x="${pillar_offset_x}" origin_y="${-pillar_offset_y}"/>
+      <xacro:pillar_template height="${pillar_height}" origin_x="${-pillar_offset_x}" origin_y="${-pillar_offset_y}"/>
+    </link>
+    <xacro:plate_template name="${name}"/>
+    <joint name="${name}_pillars_to_${name}_plate_joint" type="fixed">
+      <parent link="${name}_pillars_link"/>
+      <child link="${name}_plate_link"/>
+      <origin xyz="0 0 ${pillar_height}"/>
+    </joint>
+  </xacro:macro>
+
+  <xacro:macro name="laser_adjuster_template" params="name">
+    <link name="${name}_laser_adjuster_link">
+      <visual>
+        <geometry>
+          <box size="${bar_len_x} ${bar_len_y} ${bar_len_z}"/>
+        </geometry>
+        <origin xyz="${-bar_len_x/2} ${adjuster_width/2} ${bar_len_z/2}"/>
+        <material name="white" />
+      </visual>
+      <visual>
+        <geometry>
+          <box size="${bar_len_x} ${bar_len_y} ${bar_len_z}"/>
+        </geometry>
+        <origin xyz="${-bar_len_x/2} ${-adjuster_width/2} ${bar_len_z/2}"/>
+        <material name="white" />
+      </visual>
+    </link>
+  </xacro:macro>
+
+  <!-- Body -->
+  <!-- Bottom part -->
+  <xacro:tower_template name="bottom" pillar_height="${bottom_pillar_height}"/>
+
+  <!-- Middle part -->
+  <xacro:tower_template name="middle" pillar_height="${middle_pillar_height}"/>
+  <joint name="bottom_plate_to_middle_pillars_joint" type="fixed">
+    <parent link="bottom_plate_link"/>
+    <child link="middle_pillars_link"/>
+  </joint>
+
+  <!-- Top part -->
+  <xacro:tower_template name="top" pillar_height="${top_pillar_height}"/>
+  <joint name="middle_plate_to_top_pillars_joint" type="fixed">
+    <parent link="middle_plate_link"/>
+    <child link="top_pillars_link"/>
+  </joint>
+
+  <!-- Laser adjusters -->
+  <!-- Front -->
+  <xacro:laser_adjuster_template name="front"/>
+  <joint name="front_laser_adjuster_joint" type="fixed">
+    <origin xyz="${adjuster_offset_x} 0 0" rpy="0 0 0"/>
+    <parent link="bottom_plate_link"/>
+    <child link="front_laser_adjuster_link"/>
+  </joint>
+
+  <!-- Rear -->
+  <xacro:laser_adjuster_template name="rear"/>
+  <joint name="rear_laser_adjuster_joint" type="fixed">
+  <origin xyz="${-adjuster_offset_x} 0 0" rpy="0 0 3.1415"/>
+  <parent link="bottom_plate_link"/>
+  <child link="rear_laser_adjuster_link"/>
+  </joint>
+
+</robot>
