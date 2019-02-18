@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
-<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
-       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
-       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor" 
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller" 
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface" 
        xmlns:xacro="http://ros.org/wiki/xacro">
-
+ 
   <!-- sensors -->
-  <xacro:include filename="$(find ubiquitous_display_description)/urdf/youbot/base.gazebo.xacro"/>
-  <xacro:include filename="$(find ubiquitous_display_description)/urdf/youbot/base.transmission.xacro"/>
-
+  <xacro:include filename="$(find youbot_description)/urdf/youbot_base/base.gazebo.xacro"/>
+  <xacro:include filename="$(find youbot_description)/urdf/youbot_base/base.transmission.xacro"/>
+  
   <!-- simplified box collision geometry for base -->
   <xacro:property name="base_size_x" value="0.570"/>
   <xacro:property name="base_size_y" value="0.360"/>
@@ -41,12 +41,30 @@
 
 
   <xacro:macro name="youbot_base" params="name">
-    <link name="${name}_footprint"/>
-
+    <link name="${name}_footprint">
+      <inertial>
+        <mass value="0.1"/>
+        <origin xyz="0 0 ${-base_size_z / 2.0}" rpy="0 0 0"/>
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="Red"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 ${-base_size_z / 2.0}" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+    </link>
     <joint name="${name}_footprint_joint" type="fixed">
-      <origin xyz="0 0 0.10" rpy="0 0 0"/>
-      <parent link="${name}_footprint"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <child link="${name}_link"/>
+      <parent link="${name}_footprint"/>
     </joint>
 
     <link name="${name}_link">
@@ -58,7 +76,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://ubiquitous_display_description/meshes/DAE/base.dae"/>
+          <mesh filename="package://youbot_description/meshes/youbot_base/base.dae"/>
         </geometry>
         <material name="DarkGrey"/>
       </visual>
@@ -66,7 +84,7 @@
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
           <!--<box size="${base_size_x} ${base_size_y} ${base_size_z}" />-->
-          <mesh filename="package://ubiquitous_display_description/meshes/DAE/base_convex.dae"/>
+          <mesh filename="package://youbot_description/meshes/youbot_base/base_convex.dae"/>
         </geometry>
       </collision>
     </link>
