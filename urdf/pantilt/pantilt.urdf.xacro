@@ -1,10 +1,6 @@
 <?xml version="1.0"?>
 
-<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
-  xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
-  xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
-  xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
-  name="pantilt" >
+<robot name="pantilt" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <xacro:property name="base_to_box_height" value="0.065"/>
   <xacro:property name="box_to_proj_height" value="0.17"/>
@@ -22,7 +18,7 @@
     <color rgba="0.7 0.7 0.7 1.0" />
   </material>
 
-  <xacro:macro name="pantilt_name" params="name"> 
+  <xacro:macro name="pantilt_name" params="name">
     <link name="${name}base_link" >
     </link>
     <link name="${name}box_link" >

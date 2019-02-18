@@ -1,10 +1,6 @@
 <?xml version="1.0"?>
 
-<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
-       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
-       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
-       xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
-       name="body" >
+<robot name="body" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <!-- Definition of various sizes -->
   <xacro:property name="bottom_pillar_height" value="0.1"/>
@@ -54,7 +50,7 @@
       </visual>
     </link>
   </xacro:macro>
-  
+
   <xacro:macro name="tower_template" params="name pillar_height">
     <link name="${name}_pillars_link">
       <xacro:pillar_template height="${pillar_height}" origin_x="${pillar_offset_x}" origin_y="${pillar_offset_y}"/>

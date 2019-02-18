@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ubiquitous_didsplay_2">
+<robot name="ubiquitous_display" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <xacro:include filename="$(find ubiquitous_display_description)/urdf/body/body.urdf.xacro"/>
   <xacro:include filename="$(find ubiquitous_display_description)/urdf/pantilt/pantilt.urdf.xacro"/>
