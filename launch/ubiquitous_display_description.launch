@@ -9,5 +9,5 @@
     <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
   </group>
 
-  <param name="robot_description" command="$(find xacro)/xacro '$(find ubiquitous_display_description)/urdf/ubiquitous_display.urdf.xacro'"/>
+  <param name="robot_description" command="$(find xacro)/xacro '$(find ubiquitous_display_description)/robots/ubiquitous_display.urdf.xacro'"/>
 </launch>
