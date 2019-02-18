@@ -66,7 +66,7 @@
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
           <!--<box size="${base_size_x} ${base_size_y} ${base_size_z}" />-->
-          <mesh filename="package://ubiquitous_display_description/meshes/DAE/sbase_convex.dae"/>
+          <mesh filename="package://ubiquitous_display_description/meshes/DAE/base_convex.dae"/>
         </geometry>
       </collision>
     </link>
