@@ -21,10 +21,9 @@
   <xacro:macro name="pantilt_name" params="name">
     <link name="${name}base_link" >
     </link>
-    <link name="${name}box_link" >
-      <visual>down processing monitor complete
-done
 
+    <link name="${name}box_link" >
+      <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <box size="0.07 0.085 0.065" />
@@ -32,6 +31,7 @@ done
         <material name="gray"/>
       </visual>
     </link>
+
     <link name="${name}plate_link">
       <visual>
         <origin xyz="-0.075 0 0" rpy="0 0 0" />
@@ -41,6 +41,7 @@ done
         <material name="gray"/>
       </visual>
     </link>
+
     <link name="left_pt_pillars" >
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -59,6 +60,7 @@ done
         <material name="gray" />
       </visual>
     </link>
+
     <link name="${name}projector_link">
       <visual>
         <origin xyz="0.07 0.037 0" rpy="0 0 0" />
@@ -68,6 +70,8 @@ done
         <material name="gray"/>
       </visual>
     </link>
+
+
 
     <joint name="${name}base_joint" type="fixed">
       <parent link="${name}base_link"/>
