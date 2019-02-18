@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<xacro:macro name="ubiquitous_display_gazebo">  
+
+<gazebo>
+
+  <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+
+    <leftJoint>left_wheel_joint</leftJoint>
+    <rightJoint>right_wheel_joint</rightJoint>
+    <robotBaseFrame>base_link</robotBaseFrame>
+    <wheelSeparation>0.108</wheelSeparation>
+    <wheelDiameter>0.024</wheelDiameter>
+    <publishWheelJointState>true</publishWheelJointState>
+    <legacyMode>false</legacyMode>
+
+  </plugin>
+
+</gazebo>
+
+</xacro>
