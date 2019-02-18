@@ -38,6 +38,7 @@
 
 
   <xacro:macro name="youbot_base" params="name">
+
     <link name="${name}_footprint">
       <inertial>
         <mass value="0.1"/>
@@ -58,6 +59,8 @@
         </geometry>
       </collision>
     </link>
+
+
     <joint name="${name}_footprint_joint" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <child link="${name}_link"/>
