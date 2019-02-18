@@ -4,9 +4,9 @@
 
   <xacro:include filename="$(find ubiquitous_display_description)/urdf/body/body.urdf.xacro"/>
   <xacro:include filename="$(find ubiquitous_display_description)/urdf/pantilt/pantilt.urdf.xacro"/>
-  <xacro:include filename="$(find ubiquitous_display_description)/urdf/sensor/kinect2.urdf.xacro"/>
+  <xacro:include filename="$(find ubiquitous_display_description)/urdf/sensor/kinect/kinect2.urdf.xacro"/>
   <xacro:include filename="$(find ubiquitous_display_description)/urdf/youbot/youbot_base_only.urdf.xacro"/>
-  <xacro:include filename="$(find ubiquitous_display_description)/urdf/sensor/hokuyo_utm30lx.urdf.xacro"/>
+  <xacro:include filename="$(find ubiquitous_display_description)/urdf/sensor/lrf/hokuyo_utm30lx.urdf.xacro"/>
 
   <joint name="ud_base_link_to_bottom_pillars_link" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0" />
