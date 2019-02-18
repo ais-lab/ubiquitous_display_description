@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <xacro:include filename="$(find ubiquitous_display_description)/urdf/sensor/lrf/hokuyo_utm30lx.gazebo.xacro"/>
+
     <xacro:property name="M_PI" value="3.1415926535897931" />
 
     <xacro:macro name="hokuyo_utm30lx_model" params="name parent">
