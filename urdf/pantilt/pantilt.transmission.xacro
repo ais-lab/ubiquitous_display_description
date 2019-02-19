@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 
+<robot name="pantilt_trans" xmlns:xacro="http://ros.org/wiki/xacro">
 <xacro:macro name="ubiquitous_display_transmission">
 
 <transmission name="pan_tran">
@@ -24,4 +25,6 @@
   </actuator>
 </transmission>
 
-</xacro>
+</xacro:macro>
+
+</robot>

@@ -1,21 +1,27 @@
 <?xml version="1.0"?>
 
-<xacro:macro name="ubiquitous_display_gazebo">  
+<robot name="pantilt_gazebo" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-<gazebo>
+<xacro:macro name="pantilt_gazebo" params="name">  
 
-  <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+  <gazebo reference="${name}box_link">
+    <material>Gazebo/Grey</material>
+  </gazebo>
 
-    <leftJoint>left_wheel_joint</leftJoint>
-    <rightJoint>right_wheel_joint</rightJoint>
-    <robotBaseFrame>base_link</robotBaseFrame>
-    <wheelSeparation>0.108</wheelSeparation>
-    <wheelDiameter>0.024</wheelDiameter>
-    <publishWheelJointState>true</publishWheelJointState>
-    <legacyMode>false</legacyMode>
+  <gazebo reference="${name}plate_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Grey</material>
+  </gazebo>
 
-  </plugin>
+  <gazebo reference="${name}projector_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Grey</material>
+  </gazebo>
 
-</gazebo>
+</xacro:macro>
 
-</xacro>
+  <xacro:pantilt_gazebo name="ud_pt_"/>
+
+</robot>

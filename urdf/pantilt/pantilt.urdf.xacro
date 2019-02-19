@@ -2,6 +2,10 @@
 
 <robot name="pantilt" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+  <xacro:include filename="$(find ubiquitous_display_description)/urdf/pantilt/pantilt.transmission.xacro"/>
+  <xacro:include filename="$(find ubiquitous_display_description)/urdf/pantilt/pantilt.gazebo.xacro"/>
+
+
   <xacro:property name="base_to_box_height" value="0.065"/>
   <xacro:property name="box_to_proj_height" value="0.17"/>
 
@@ -19,6 +23,7 @@
   </material>
 
   <xacro:macro name="pantilt_name" params="name">
+
     <link name="${name}base_link" >
     </link>
 
@@ -30,6 +35,14 @@
         </geometry>
         <material name="gray"/>
       </visual>
+     <inertial>
+       <origin xyz="0 0 ${base_to_box_height/2}" rpy="0 0 0"/>
+       <mass value="1"/>
+       <inertia
+	    ixx="1.0" ixy="0.0" ixz="0.0"
+	    iyy="1.0" iyz="0.0"
+	    izz="1.0"/>
+     </inertial>
     </link>
 
     <link name="${name}plate_link">
@@ -40,6 +53,14 @@
         </geometry>
         <material name="gray"/>
       </visual>
+     <inertial>
+       <origin xyz="0 0 0.0015" rpy="0 0 0"/>
+       <mass value="1"/>
+       <inertia
+	    ixx="1.0" ixy="0.0" ixz="0.0"
+	    iyy="1.0" iyz="0.0"
+	    izz="1.0"/>
+     </inertial>
     </link>
 
     <link name="left_pt_pillars" >
@@ -69,6 +90,14 @@
         </geometry>
         <material name="gray"/>
       </visual>
+     <inertial>
+       <origin xyz="0 0 0.035" rpy="0 0 0"/>
+       <mass value="1"/>
+       <inertia
+	    ixx="1.0" ixy="0.0" ixz="0.0"
+	    iyy="1.0" iyz="0.0"
+	    izz="1.0"/>
+     </inertial>
     </link>
 
 
@@ -78,6 +107,7 @@
       <child link="${name}box_link"/>
       <origin xyz="0 0 0" rpy="0 0 0" />
     </joint>
+
     <!--name of pan_joint and tilt_joint depend pantilt.yaml-->
     <joint name="pan_joint" type="revolute">
       <parent link="${name}box_link"/>
@@ -85,7 +115,10 @@
       <origin xyz="0 0 ${base_to_box_height/2}" rpy="0 0 0" />
       <axis xyz="0 0 1" />
       <limit lower="0" upper="2" effort="1" velocity="1"/>
+      <dynamics damping="0.7"/>
     </joint>
+
+
     <joint name="ud_pt_plate_link_to_left_pt_pillars" type="fixed">
       <parent link="${name}plate_link"/>
       <child link="left_pt_pillars"/>
@@ -96,12 +129,14 @@
       <child link="right_pt_pillars"/>
       <origin xyz="-0.24 0 0.1" rpy="0 0 0" />
     </joint>
+
     <joint name="tilt_joint" type="revolute">
       <parent link="${name}plate_link"/>
       <child link="${name}projector_link"/>
       <origin xyz="0 0 ${box_to_proj_height}" rpy="0 0 3.14" />
       <axis xyz="1 0 0" />
       <limit lower="0" upper="2" effort="1" velocity="1"/>
+      <dynamics damping="0.7"/>
     </joint>
 
   </xacro:macro>
