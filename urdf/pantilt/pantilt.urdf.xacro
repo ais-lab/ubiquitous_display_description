@@ -28,6 +28,13 @@
     </link>
 
     <link name="${name}box_link" >
+      <collision>
+        <origin xyz="0 0 0.0325" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.07 0.085 0.065"/>
+        </geometry>
+      </collision>
+
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
@@ -46,6 +53,12 @@
     </link>
 
     <link name="${name}plate_link">
+      <collision>
+        <origin xyz="0 0 0.0015" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.35 0.095 0.003"/>
+        </geometry>
+      </collision>
       <visual>
         <origin xyz="-0.075 0 0" rpy="0 0 0" />
         <geometry>
@@ -64,6 +77,12 @@
     </link>
 
     <link name="left_pt_pillars" >
+      <collision>
+        <origin xyz="0 0 0.10" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.01 0.05 0.20"/>
+        </geometry>
+      </collision>
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
@@ -82,6 +101,12 @@
 
     </link>
     <link name="right_pt_pillars" >
+      <collision>
+        <origin xyz="0 0 0.10" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.01 0.05 0.20"/>
+        </geometry>
+      </collision>
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
@@ -100,6 +125,12 @@
     </link>
 
     <link name="${name}projector_link">
+      <collision>
+        <origin xyz="0 0 0.035" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.24 0.17 0.07"/>
+        </geometry>
+      </collision>
       <visual>
         <origin xyz="0.07 0.037 0" rpy="0 0 0" />
         <geometry>
