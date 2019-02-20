@@ -20,6 +20,18 @@
     <material>Gazebo/Grey</material>
   </gazebo>
 
+  <gazebo reference="left_pt_pillars">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <gazebo reference="right_pt_pillars">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
 </xacro:macro>
 
   <xacro:pantilt_gazebo name="ud_pt_"/>
