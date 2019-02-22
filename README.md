@@ -1,2 +1,1 @@
 # ubiquitous_display_description
-# ubiquitous_display_simulations
