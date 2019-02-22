@@ -5,29 +5,57 @@
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kinect2">
 
-  <xacro:macro name="kinect2_xacro" params="prefix parent *origin">
+  <xacro:macro name="kinect2_model" params="name">
 
-    <material name="Kinect2Grey">
-      <color rgba="0.15 0.15 0.15 1.0"/>
-    </material>
-
-    <link name="${prefix}_kinect2_rgb_optical_frame">
+    <link name="kinect2_plate_link">
       <visual>
-        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <!-- these meshes were exported in mm, so scale back to m -->
-          <mesh filename="package://ubiquitous_display_description/meshes/STL/kinect2_origin_on_rgb_optical_frame.stl" scale="0.001 0.001 0.001"/>
+          <box size="0.25 0.015 0.01" />
         </geometry>
-        <material name="Kinect2Grey"/>
+        <material name="gray"/>
       </visual>
     </link>
 
-    <!-- Joint connecting the parent to our frame_in -->
-    <joint name="${prefix}_kinect2_in_joint" type="fixed">
-      <xacro:insert_block name="origin"/>
-      <parent link="${parent}"/>
-      <child link="${prefix}_kinect2_rgb_optical_frame"/>
+    <joint name="${name}projector_link_to_kinect2_plate_link" type="fixed">
+      <origin xyz="0.075 -0.11 0.135" rpy="0 0 3.14" />
+      <parent link="${name}projector_link" />
+      <child link="kinect2_plate_link" />
+    </joint>
+
+    <link name="kinect2_rgb_optical_frame">
+      <visual>
+        <origin rpy="-1.56 0 0" xyz="0 0 0"/>
+        <geometry>
+            <!-- these meshes were exported in mm, so scale back to m -->
+          <mesh filename="package://ubiquitous_display_description/meshes/STL/kinect2_origin_on_rgb_optical_frame.stl" scale="0.001 0.001 0.001"/>
+          <!--box size="0.25 0.07 0.45" /-->
+        </geometry>
+        <material name="black"/>
+      </visual>
+    </link>
+
+    <link name="kinect2_ir_optical_frame">
+      <visual>
+        <origin rpy="0.075 0 0" xyz="0 0 0"/>
+        <geometry>
+          <sphere radius="0.0005"/>
+        </geometry>
+        <material name="black"/>
+      </visual>
+    </link>
+
+    <joint name="kinect2_plate_to_kinect2_rgb_optical_frame" type="fixed">
+      <origin xyz="0.095 0 0.035 " rpy="0 0 0" />
+      <parent link="kinect2_plate_link"/>
+      <child link="kinect2_rgb_optical_frame"/>
+    </joint>
+    <joint name="kinect2_rgb_optical_frame_to_kinect2_ir_optical_frame" type="fixed">
+      <origin xyz="-0.0425 0 0 " rpy="0 0 0" />
+      <parent link="kinect2_rgb_optical_frame"/>
+      <child link="kinect2_ir_optical_frame"/>
     </joint>
 
   </xacro:macro>
+
 </robot>
