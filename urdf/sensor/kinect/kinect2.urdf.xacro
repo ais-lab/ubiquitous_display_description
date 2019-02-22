@@ -25,15 +25,31 @@
     </joint>
 
     <link name="kinect2_rgb_optical_frame">
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.25 0.065 0.068"/>
+        </geometry>
+      </collision>
+
       <visual>
         <origin rpy="-1.56 0 0" xyz="0 0 0"/>
         <geometry>
             <!-- these meshes were exported in mm, so scale back to m -->
           <mesh filename="package://ubiquitous_display_description/meshes/STL/kinect2_origin_on_rgb_optical_frame.stl" scale="0.001 0.001 0.001"/>
-          <!--box size="0.25 0.07 0.45" /-->
+          <!--box size="0.25 0.07 0.6" /-->
         </geometry>
         <material name="black"/>
       </visual>
+
+      <inertial>
+        <mass value="0.2" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia
+          ixx="0.00147" ixy="0" ixz="0"
+          iyy="0.01112" iyz="0"
+          izz="0.01118" />
+      </inertial>
     </link>
 
     <link name="kinect2_ir_optical_frame">
@@ -56,8 +72,8 @@
       <parent link="kinect2_rgb_optical_frame"/>
       <child link="kinect2_ir_optical_frame"/>
     </joint>
-    <xacro:kinect_ir_sensor_gazebo link_name="kinect2_ir_optical_frame" frame_name="kinect2_ir_optical_frame" camera_name="ubiquitous_display" />
-    <xacro:kinect_rgb_sensor_gazebo link_name="kinect2_rgb_optical_frame" frame_name="kinect2_rgb_optical_frame" camera_name="ubiquitous_display" />
+    <!--<xacro:kinect_ir_sensor_gazebo link_name="kinect2_ir_optical_frame" frame_name="kinect2_ir_optical_frame" camera_name="ir" />-->
+    <xacro:kinect_rgb_sensor_gazebo link_name="kinect2_rgb_optical_frame" frame_name="kinect2_rgb_optical_frame" camera_name="rgb" />
   </xacro:macro>
 
 </robot>
