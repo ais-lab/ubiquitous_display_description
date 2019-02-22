@@ -43,7 +43,7 @@
           <hackBaseline>0</hackBaseline>
         </plugin>
       </sensor>
-      <material value="Gazebo/Red"/>
+      <material value="Gazebo/Black"/>
     </gazebo>
   </xacro:macro>
 
@@ -87,7 +87,7 @@
 					<hackBaseline>0</hackBaseline>
 				</plugin>
 			</sensor>
-			<material value="Gazebo/Red"/>
+			<material value="Gazebo/Black"/>
 		</gazebo>
 	</xacro:macro>
 
