@@ -34,8 +34,4 @@
     </plugin>
   </gazebo>
 
-  <!--xacro:kinect2_xacro prefix="ud" parent="kinect2_plate_link"/-->
-
-
-
 </robot>
