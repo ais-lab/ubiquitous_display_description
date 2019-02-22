@@ -209,10 +209,6 @@
     </link>
   <link name="ud_pt_box_link">
     <visual>
-      down processing monitor complete
-done
-
-
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
         <box size="0.07 0.085 0.065"/>
