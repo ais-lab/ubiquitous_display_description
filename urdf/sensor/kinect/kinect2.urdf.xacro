@@ -4,6 +4,7 @@
 <!-- License: GPLv3+ -->
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kinect2">
+  <xacro:include filename="$(find ubiquitous_display_description)/urdf/sensor/kinect/kinect2.gazebo.xacro"/>
 
   <xacro:macro name="kinect2_model" params="name">
 
@@ -55,7 +56,8 @@
       <parent link="kinect2_rgb_optical_frame"/>
       <child link="kinect2_ir_optical_frame"/>
     </joint>
-
+    <xacro:kinect_ir_sensor_gazebo link_name="kinect2_ir_optical_frame" frame_name="none" camera_name="none" />
+    <xacro:kinect_rgb_sensor_gazebo link_name="kinect2_rgb_optical_frame" frame_name="none" camera_name="none" />
   </xacro:macro>
 
 </robot>
