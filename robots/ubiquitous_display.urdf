@@ -943,8 +943,8 @@
     <parent link="kinect2_rgb_optical_frame"/>
     <child link="kinect2_ir_optical_frame"/>
   </joint>
-  <gazebo reference="kinect2_ir_optical_frame_optical_frame">
-    <sensor name="kinect2_ir_optical_frame_ir_sensor" type="depth">
+  <gazebo reference="kinect2_ir_optical_frame">
+    <sensor name="kinect2_ir_sensor" type="depth">
       <always_on>true</always_on>
       <update_rate>1.0</update_rate>
       <camera>
@@ -959,7 +959,7 @@
           <far>3.5</far>
         </clip>
       </camera>
-      <plugin filename="libgazebo_ros_openni_kinect.so" name="kinect2_ir_optical_frame_controller">
+      <plugin filename="libgazebo_ros_openni_kinect.so" name="kinect2_ir_controller">
         <baseline>0.2</baseline>
         <alwaysOn>true</alwaysOn>
         <updateRate>1.0</updateRate>
@@ -985,8 +985,8 @@
     </sensor>
     <material value="Gazebo/Black"/>
   </gazebo>
-  <gazebo reference="kinect2_rgb_optical_frame_optical_frame">
-    <sensor name="kinect2_rgb_optical_frame_sensor" type="depth">
+  <gazebo reference="kinect2_rgb_optical_frame">
+    <sensor name="kinect2_rgb_sensor" type="depth">
       <always_on>true</always_on>
       <update_rate>1.0</update_rate>
       <camera>
@@ -1001,7 +1001,7 @@
           <far>3.5</far>
         </clip>
       </camera>
-      <plugin filename="libgazebo_ros_openni_kinect.so" name="kinect2_rgb_optical_frame_controller">
+      <plugin filename="libgazebo_ros_openni_kinect.so" name="kinect2_rgb_controller">
         <alwaysOn>true</alwaysOn>
         <updateRate>1.0</updateRate>
         <cameraName>rgb_rgb</cameraName>
