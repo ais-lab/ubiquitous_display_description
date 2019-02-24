@@ -156,13 +156,6 @@
       <geometry>
         <box size="0.18 0.02 0.02"/>
       </geometry>
-      <origin xyz="-0.09 0.025 0.01"/>
-      <material name="white"/>
-    </visual>
-    <visual>
-      <geometry>
-        <box size="0.18 0.02 0.02"/>
-      </geometry>
       <origin xyz="-0.09 -0.025 0.01"/>
       <material name="white"/>
     </visual>
@@ -173,13 +166,6 @@
     <child link="front_laser_adjuster_link"/>
   </joint>
   <link name="rear_laser_adjuster_link">
-    <visual>
-      <geometry>
-        <box size="0.18 0.02 0.02"/>
-      </geometry>
-      <origin xyz="-0.09 0.025 0.01"/>
-      <material name="white"/>
-    </visual>
     <visual>
       <geometry>
         <box size="0.18 0.02 0.02"/>
@@ -382,16 +368,15 @@
   <material name="LightGrey">
     <color rgba="0.82 0.82 0.82 1.0"/>
   </material>
-  <gazebo>
-    <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_controller"/>
-  </gazebo>
+  <!-- controller manager -->
+  <!--<xacro:include filename="$(find ubiquitous_display_description)/urdf/youbot/ros_controller.urdf.xacro" />-->
   <!-- Now we can start using the macros xacro:included above to define the actual youbot -->
   <!-- The first use of a macro.  This one was defined in base.urdf.xacro above.
        A macro like this will expand to a set of link and joint definitions, and to additional
-       Gazebo-related extensions (sensor plugins, etc).  The macro takes an argument, name, 
-       that equals "base", and uses it to generate names for its component links and joints 
-       (e.g., base_link).  The xacro:included origin block is also an argument to the macro.  By convention, 
-       the origin block defines where the component is w.r.t its parent (in this case the parent 
+       Gazebo-related extensions (sensor plugins, etc).  The macro takes an argument, name,
+       that equals "base", and uses it to generate names for its component links and joints
+       (e.g., base_link).  The xacro:included origin block is also an argument to the macro.  By convention,
+       the origin block defines where the component is w.r.t its parent (in this case the parent
        is the world frame). For more, see http://www.ros.org/wiki/xacro -->
   <link name="ud_base_footprint">
     <inertial>
