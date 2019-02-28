@@ -15,7 +15,7 @@
   </joint>
   <!-- joint for body and pantilt-->
   <joint name="top_plate_link_to_ud_pt_base_link" type="fixed">
-    <origin xyz="0 0 0.0325 " rpy="0 0 0" />
+    <origin xyz="0 0 0.0325 " rpy="0 0 3.14" />
     <parent link="top_plate_link"/>
     <child link="ud_pt_base_link"/>
   </joint>
