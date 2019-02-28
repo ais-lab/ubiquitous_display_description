@@ -163,7 +163,7 @@
     <joint name="${name}projector_link_to_${name}projector_optical_frame" type="fixed">
       <parent link="${name}projector_link"/>
       <child link="${name}projector_optical_frame"/>
-      <origin xyz="0 -0.02 0" rpy="0 0 3.14" />
+      <origin xyz="0 -0.02 0" rpy="-1.56 0 3.14" />
     </joint>
 
   </xacro:macro>
