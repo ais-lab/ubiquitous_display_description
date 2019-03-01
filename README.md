@@ -13,8 +13,9 @@ $ roslaunch ubiquitous_display_description ubiquitous_display_description.launch
 $ roslaunch ubiquitous_display_pantilt start_pantilt.launch 
 
 youBotのターミナル内で
-
 $ roslaunch youbot_driver_ros_interface youbot_driver_for_ud.launch
+
+$ rosrun tf static_transform_publisher 0 0 0 0 0 0 base_footprint ud_base_footprint 100
 
 TFについて
 
