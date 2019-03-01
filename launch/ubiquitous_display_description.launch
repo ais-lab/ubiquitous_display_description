@@ -7,7 +7,7 @@
 
   <group unless="$(arg pt)">
     <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
-    <rosparam param="source_list">["pantilt_joint_states"]</rosparam>
+    <rosparam param="source_list">["pantilt_joint_states","ud_base_joint_states"]</rosparam>
   </group>
 
   <param name="robot_description" command="$(find xacro)/xacro '$(find ubiquitous_display_description)/robots/ubiquitous_display.urdf.xacro'"/>
