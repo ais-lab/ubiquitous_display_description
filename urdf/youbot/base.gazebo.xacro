@@ -7,51 +7,51 @@
 
   <xacro:macro name="youbot_base_gazebo">
     <gazebo reference="youbot_base">
-      <material value="youbot/DarkGrey" />
+      <material>Gazebo/DarkGrey</material>
     </gazebo>
 
     <!-- front left wheel -->
     <gazebo reference="wheel_link_fl">
-      <material value="youbot/Orange" />
+      <material>Gazebo/Orange</material>
       <kp>1000000</kp>
       <kd>100</kd>
     </gazebo>
-    
+
     <gazebo reference="caster_link_fl">
-      <material value="youbot/Orange" />
+      <material>Gazebo/Orange</material>
     </gazebo>
 
     <!-- front right wheel -->
     <gazebo reference="wheel_link_fr">
-      <material value="youbot/Orange" />
+      <material>Gazebo/Orange</material>
       <kp>1000000</kp>
       <kd>100</kd>
     </gazebo>
-    
-    <gazebo reference="caster_link_fr">   
-      <material value="youbot/Orange" />
+
+    <gazebo reference="caster_link_fr">
+      <material>Gazebo/Orange</material>
     </gazebo>
 
     <!-- back left wheel -->
     <gazebo reference="wheel_link_bl">
-      <material value="youbot/Orange" />
+      <material>Gazebo/Orange</material>
       <kp>1000000</kp>
       <kd>100</kd>
     </gazebo>
-    
+
     <gazebo reference="caster_link_bl">
-      <material value="youbot/Orange" />
+      <material>Gazebo/Orange</material>
     </gazebo>
 
     <!-- back right wheel -->
     <gazebo reference="wheel_link_br">
-      <material value="youbot/Orange" />
+      <material>Gazebo/Orange</material>
       <kp>1000000</kp>
       <kd>100</kd>
     </gazebo>
-    
+
     <gazebo reference="caster_link_br">
-      <material value="youbot/Orange" />
+      <material>Gazebo/Orange</material>
     </gazebo>
 
     <!-- position controller -->
