@@ -26,14 +26,14 @@
 
     <link name="kinect2_rgb_optical_frame">
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="-1.56 0 0" rpy="0 0 0"/>
         <geometry>
           <box size="0.25 0.065 0.068"/>
         </geometry>
       </collision>
 
       <visual>
-        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <origin rpy="-1.56 0 0" xyz="0 0 0"/>
         <geometry>
             <!-- these meshes were exported in mm, so scale back to m -->
           <mesh filename="package://ubiquitous_display_description/meshes/STL/kinect2_origin_on_rgb_optical_frame.stl" scale="0.001 0.001 0.001"/>
@@ -44,7 +44,7 @@
 
       <inertial>
         <mass value="0.2" />
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="-1.56 0 0" rpy="0 0 0"/>
         <inertia
           ixx="0.00147" ixy="0" ixz="0"
           iyy="0.01112" iyz="0"

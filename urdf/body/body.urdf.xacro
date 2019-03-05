@@ -4,7 +4,7 @@
   <xacro:include filename="$(find ubiquitous_display_description)/urdf/body/body.gazebo.xacro"/>
 
   <!-- Definition of various sizes -->
-  <xacro:property name="bottom_pillar_height" value="0.1"/>
+  <xacro:property name="bottom_pillar_height" value="0.14"/>
   <xacro:property name="middle_pillar_height" value="0.157"/>
   <xacro:property name="top_pillar_height" value="0.435"/>
   <xacro:property name="pillar_radius" value="0.01"/>
