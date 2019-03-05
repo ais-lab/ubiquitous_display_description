@@ -62,6 +62,7 @@
       </visual>
     </link>
 
+
     <joint name="kinect2_plate_to_kinect2_rgb_optical_frame" type="fixed">
       <origin xyz="0.095 0 0.035 " rpy="-1.56 0 0" />
       <parent link="kinect2_plate_link"/>
