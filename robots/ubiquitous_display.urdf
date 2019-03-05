@@ -41,6 +41,11 @@
       <material name="black"/>
     </visual>
   </link>
+  <gazebo reference="bottom_pillars_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
   <link name="bottom_plate_link">
     <visual>
       <geometry>
@@ -50,6 +55,11 @@
       <material name="white"/>
     </visual>
   </link>
+  <gazebo reference="bottom_plate_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Grey</material>
+  </gazebo>
   <joint name="bottom_pillars_to_bottom_plate_joint" type="fixed">
     <parent link="bottom_pillars_link"/>
     <child link="bottom_plate_link"/>
@@ -85,6 +95,11 @@
       <material name="black"/>
     </visual>
   </link>
+  <gazebo reference="middle_pillars_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
   <link name="middle_plate_link">
     <visual>
       <geometry>
@@ -94,6 +109,11 @@
       <material name="white"/>
     </visual>
   </link>
+  <gazebo reference="middle_plate_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Grey</material>
+  </gazebo>
   <joint name="middle_pillars_to_middle_plate_joint" type="fixed">
     <parent link="middle_pillars_link"/>
     <child link="middle_plate_link"/>
@@ -133,6 +153,11 @@
       <material name="black"/>
     </visual>
   </link>
+  <gazebo reference="top_pillars_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
   <link name="top_plate_link">
     <visual>
       <geometry>
@@ -142,6 +167,11 @@
       <material name="white"/>
     </visual>
   </link>
+  <gazebo reference="top_plate_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Grey</material>
+  </gazebo>
   <joint name="top_pillars_to_top_plate_joint" type="fixed">
     <parent link="top_pillars_link"/>
     <child link="top_plate_link"/>
@@ -160,6 +190,11 @@
       <material name="white"/>
     </visual>
   </link>
+  <gazebo reference="front_laser_adjuster_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/White</material>
+  </gazebo>
   <joint name="front_laser_adjuster_joint" type="fixed">
     <origin rpy="0 0 0" xyz="0.3 0 0"/>
     <parent link="bottom_plate_link"/>
@@ -174,6 +209,11 @@
       <material name="white"/>
     </visual>
   </link>
+  <gazebo reference="rear_laser_adjuster_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/White</material>
+  </gazebo>
   <joint name="rear_laser_adjuster_joint" type="fixed">
     <origin rpy="0 0 3.1415" xyz="-0.3 0 0"/>
     <parent link="bottom_plate_link"/>
@@ -252,7 +292,7 @@
   </link>
   <link name="ud_pt_plate_link">
     <visual>
-      <origin rpy="0 0 0" xyz="-0.075 0 0"/>
+      <origin rpy="0 0 0" xyz="0.075 0 0"/>
       <geometry>
         <box size="0.35 0.095 0.003"/>
       </geometry>
@@ -306,6 +346,7 @@
       <inertia ixx="0.00536" ixy="0.0" ixz="0.0" iyy="0.01441" iyz="0.0" izz="0.01041"/>
     </inertial>
   </link>
+  <link name="ud_pt_projector_optical_frame"/>
   <joint name="ud_pt_base_joint" type="fixed">
     <parent link="ud_pt_base_link"/>
     <child link="ud_pt_box_link"/>
@@ -324,21 +365,26 @@
   <joint name="ud_pt_plate_link_to_left_pt_pillars" type="fixed">
     <parent link="ud_pt_plate_link"/>
     <child link="left_pt_pillars"/>
-    <origin rpy="0 0 0" xyz="0.09 0 0.1"/>
+    <origin rpy="0 0 0" xyz="-0.09 0 0.1"/>
   </joint>
   <joint name="ud_pt_plate_link_to_right_pt_pillars" type="fixed">
     <parent link="ud_pt_plate_link"/>
     <child link="right_pt_pillars"/>
-    <origin rpy="0 0 0" xyz="-0.24 0 0.1"/>
+    <origin rpy="0 0 0" xyz="0.24 0 0.1"/>
   </joint>
   <joint name="tilt_joint" type="revolute">
     <parent link="ud_pt_plate_link"/>
     <child link="ud_pt_projector_link"/>
-    <origin rpy="0 0 3.14" xyz="0 0 0.17"/>
+    <origin rpy="0 0 0" xyz="0 0 0.17"/>
     <axis xyz="1 0 0"/>
-    <limit effort="10" lower="-0.2617" upper="0.7853" velocity="1"/>
+    <limit effort="10" lower="-0.2617" upper="1.3" velocity="1"/>
     <!--<safety_controller k_velocity="10" k_position="15" soft_lower_limit="-2.0" soft_upper_limit="0.5" />-->
     <dynamics damping="0.7"/>
+  </joint>
+  <joint name="ud_pt_projector_link_to_ud_pt_projector_optical_frame" type="fixed">
+    <parent link="ud_pt_projector_link"/>
+    <child link="ud_pt_projector_optical_frame"/>
+    <origin rpy="-1.56 0 3.14" xyz="0 -0.02 0"/>
   </joint>
   <!--xacro:property name="" value="0.360" /-->
   <material name="Orange">
@@ -412,7 +458,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://youbot_description/meshes/youbot_base/base.dae"/>
+        <mesh filename="package://ubiquitous_display_description/meshes/DAE/base.dae"/>
       </geometry>
       <material name="DarkGrey"/>
     </visual>
@@ -420,7 +466,7 @@
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
         <!--<box size="${base_size_x} ${base_size_y} ${base_size_z}" />-->
-        <mesh filename="package://youbot_description/meshes/youbot_base/base_convex.dae"/>
+        <mesh filename="package://ubiquitous_display_description/meshes/DAE/base_convex.dae"/>
       </geometry>
     </collision>
   </link>
@@ -753,7 +799,7 @@
   </joint>
   <!-- joint for body and pantilt-->
   <joint name="top_plate_link_to_ud_pt_base_link" type="fixed">
-    <origin rpy="0 0 0" xyz="0 0 0.0325 "/>
+    <origin rpy="0 0 3.14" xyz="0 0 0.0325 "/>
     <parent link="top_plate_link"/>
     <child link="ud_pt_base_link"/>
   </joint>
@@ -895,7 +941,7 @@
       </geometry>
     </collision>
     <visual>
-      <origin rpy="-1.56 0 0" xyz="0 0 0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
         <!-- these meshes were exported in mm, so scale back to m -->
         <mesh filename="package://ubiquitous_display_description/meshes/STL/kinect2_origin_on_rgb_optical_frame.stl" scale="0.001 0.001 0.001"/>
@@ -911,7 +957,7 @@
   </link>
   <link name="kinect2_ir_optical_frame">
     <visual>
-      <origin rpy="0.075 0 0" xyz="0 0 0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
         <sphere radius="0.0005"/>
       </geometry>
@@ -919,7 +965,7 @@
     </visual>
   </link>
   <joint name="kinect2_plate_to_kinect2_rgb_optical_frame" type="fixed">
-    <origin rpy="0 0 0" xyz="0.095 0 0.035 "/>
+    <origin rpy="-1.56 0 0" xyz="0.095 0 0.035 "/>
     <parent link="kinect2_plate_link"/>
     <child link="kinect2_rgb_optical_frame"/>
   </joint>
@@ -931,6 +977,7 @@
   <gazebo reference="kinect2_ir_optical_frame">
     <sensor name="kinect2_ir_sensor" type="depth">
       <always_on>true</always_on>
+      <visualize>true</visualize>
       <update_rate>1.0</update_rate>
       <camera>
         <horizontal_fov>0.994837673637</horizontal_fov>
@@ -940,8 +987,8 @@
           <height>480</height>
         </image>
         <clip>
-          <near>1.2</near>
-          <far>3.5</far>
+          <near>0.02</near>
+          <far>300</far>
         </clip>
       </camera>
       <plugin filename="libgazebo_ros_openni_kinect.so" name="kinect2_ir_controller">
@@ -974,6 +1021,7 @@
     <sensor name="kinect2_rgb_sensor" type="depth">
       <always_on>true</always_on>
       <update_rate>1.0</update_rate>
+      <visualize>true</visualize>
       <camera>
         <horizontal_fov>0.994837673637</horizontal_fov>
         <image>
@@ -982,8 +1030,8 @@
           <height>480</height>
         </image>
         <clip>
-          <near>1.2</near>
-          <far>3.5</far>
+          <near>0.02</near>
+          <far>300</far>
         </clip>
       </camera>
       <plugin filename="libgazebo_ros_openni_kinect.so" name="kinect2_rgb_controller">

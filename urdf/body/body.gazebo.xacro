@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<robot name="body_gazebo" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:macro name="plate_template_gazebo" params="name">
+  <gazebo reference="${name}_plate_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Grey</material>
+  </gazebo>
+</xacro:macro>
+
+<xacro:macro name="pillar_template_gazebo" params="name">
+  <gazebo reference="${name}_pillars_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Black</material>
+  </gazebo>
+</xacro:macro>
+
+<xacro:macro name="laser_adjuster_template_gazebo" params="name">
+  <gazebo reference="${name}_laser_adjuster_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/White</material>
+  </gazebo>
+</xacro:macro>
+
+</robot>
