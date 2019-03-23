@@ -14,30 +14,30 @@
   <link name="bottom_pillars_link">
     <visual>
       <geometry>
-        <cylinder length="0.1" radius="0.01"/>
+        <cylinder length="0.14" radius="0.01"/>
       </geometry>
-      <origin xyz="0.21 0.06 0.05"/>
+      <origin xyz="0.21 0.06 0.07"/>
       <material name="black"/>
     </visual>
     <visual>
       <geometry>
-        <cylinder length="0.1" radius="0.01"/>
+        <cylinder length="0.14" radius="0.01"/>
       </geometry>
-      <origin xyz="-0.21 0.06 0.05"/>
+      <origin xyz="-0.21 0.06 0.07"/>
       <material name="black"/>
     </visual>
     <visual>
       <geometry>
-        <cylinder length="0.1" radius="0.01"/>
+        <cylinder length="0.14" radius="0.01"/>
       </geometry>
-      <origin xyz="0.21 -0.06 0.05"/>
+      <origin xyz="0.21 -0.06 0.07"/>
       <material name="black"/>
     </visual>
     <visual>
       <geometry>
-        <cylinder length="0.1" radius="0.01"/>
+        <cylinder length="0.14" radius="0.01"/>
       </geometry>
-      <origin xyz="-0.21 -0.06 0.05"/>
+      <origin xyz="-0.21 -0.06 0.07"/>
       <material name="black"/>
     </visual>
   </link>
@@ -63,7 +63,12 @@
   <joint name="bottom_pillars_to_bottom_plate_joint" type="fixed">
     <parent link="bottom_pillars_link"/>
     <child link="bottom_plate_link"/>
-    <origin xyz="0 0 0.1"/>
+    <origin xyz="0 0 0.14"/>
+  </joint>
+  <joint name="base_link_to_bottom_pillars_link" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="bottom_pillars_link"/>
   </joint>
   <link name="middle_pillars_link">
     <visual>
@@ -274,118 +279,6 @@
   <material name="gray">
     <color rgba="0.7 0.7 0.7 1.0"/>
   </material>
-  <link name="ud_pt_base_link">
-    </link>
-  <link name="ud_pt_box_link">
-    <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <box size="0.07 0.085 0.065"/>
-      </geometry>
-      <material name="gray"/>
-    </visual>
-    <inertial>
-      <origin rpy="0 0 0" xyz="0 0 0.0325"/>
-      <mass value="0.28"/>
-      <inertia ixx="0.00190" ixy="0.0" ixz="0.0" iyy="0.00202" iyz="0.0" izz="0.00152"/>
-    </inertial>
-  </link>
-  <link name="ud_pt_plate_link">
-    <visual>
-      <origin rpy="0 0 0" xyz="0.075 0 0"/>
-      <geometry>
-        <box size="0.35 0.095 0.003"/>
-      </geometry>
-      <material name="gray"/>
-    </visual>
-    <inertial>
-      <origin rpy="0 0 0" xyz="0 0 0.0015"/>
-      <mass value="0.08"/>
-      <inertia ixx="0.00150" ixy="0.0" ixz="0.0" iyy="0.02191" iyz="0.0" izz="0.02041"/>
-    </inertial>
-  </link>
-  <link name="left_pt_pillars">
-    <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <box size="0.01 0.05 0.20"/>
-      </geometry>
-      <material name="gray"/>
-    </visual>
-    <inertial>
-      <origin rpy="0 0 0" xyz="0 0 0.01"/>
-      <mass value="0.06"/>
-      <inertia ixx="0.00708" ixy="0.0" ixz="0.0" iyy="0.00043" iyz="0.0" izz="0.00668"/>
-    </inertial>
-  </link>
-  <link name="right_pt_pillars">
-    <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <box size="0.01 0.05 0.20"/>
-      </geometry>
-      <material name="gray"/>
-    </visual>
-    <inertial>
-      <origin rpy="0 0 0" xyz="0 0 0.01"/>
-      <mass value="0.06"/>
-      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
-    </inertial>
-  </link>
-  <link name="ud_pt_projector_link">
-    <visual>
-      <origin rpy="0 0 0" xyz="0.07 0.037 0"/>
-      <geometry>
-        <box size="0.24 0.17 0.07"/>
-      </geometry>
-      <material name="gray"/>
-    </visual>
-    <inertial>
-      <origin rpy="0 0 0" xyz="0 0 0.035"/>
-      <mass value="2"/>
-      <inertia ixx="0.00536" ixy="0.0" ixz="0.0" iyy="0.01441" iyz="0.0" izz="0.01041"/>
-    </inertial>
-  </link>
-  <link name="ud_pt_projector_optical_frame"/>
-  <joint name="ud_pt_base_joint" type="fixed">
-    <parent link="ud_pt_base_link"/>
-    <child link="ud_pt_box_link"/>
-    <origin rpy="0 0 0" xyz="0 0 0"/>
-  </joint>
-  <!--name of pan_joint and tilt_joint depend pantilt.yaml-->
-  <joint name="pan_joint" type="revolute">
-    <parent link="ud_pt_box_link"/>
-    <child link="ud_pt_plate_link"/>
-    <origin rpy="0 0 0" xyz="0 0 0.0325"/>
-    <axis xyz="0 0 1"/>
-    <limit effort="41" lower="-2.9670" upper="2.9670" velocity="1"/>
-    <!--<safety_controller k_velocity="10" k_position="15" soft_lower_limit="-2.0" soft_upper_limit="0.5" />-->
-    <dynamics damping="0.7"/>
-  </joint>
-  <joint name="ud_pt_plate_link_to_left_pt_pillars" type="fixed">
-    <parent link="ud_pt_plate_link"/>
-    <child link="left_pt_pillars"/>
-    <origin rpy="0 0 0" xyz="-0.09 0 0.1"/>
-  </joint>
-  <joint name="ud_pt_plate_link_to_right_pt_pillars" type="fixed">
-    <parent link="ud_pt_plate_link"/>
-    <child link="right_pt_pillars"/>
-    <origin rpy="0 0 0" xyz="0.24 0 0.1"/>
-  </joint>
-  <joint name="tilt_joint" type="revolute">
-    <parent link="ud_pt_plate_link"/>
-    <child link="ud_pt_projector_link"/>
-    <origin rpy="0 0 0" xyz="0 0 0.17"/>
-    <axis xyz="1 0 0"/>
-    <limit effort="10" lower="-0.2617" upper="1.3" velocity="1"/>
-    <!--<safety_controller k_velocity="10" k_position="15" soft_lower_limit="-2.0" soft_upper_limit="0.5" />-->
-    <dynamics damping="0.7"/>
-  </joint>
-  <joint name="ud_pt_projector_link_to_ud_pt_projector_optical_frame" type="fixed">
-    <parent link="ud_pt_projector_link"/>
-    <child link="ud_pt_projector_optical_frame"/>
-    <origin rpy="-1.56 0 3.14" xyz="0 -0.02 0"/>
-  </joint>
   <!--xacro:property name="" value="0.360" /-->
   <material name="Orange">
     <color rgba="1.0 0.4 0.0 1.0"/>
@@ -424,7 +317,7 @@
        (e.g., base_link).  The xacro:included origin block is also an argument to the macro.  By convention,
        the origin block defines where the component is w.r.t its parent (in this case the parent
        is the world frame). For more, see http://www.ros.org/wiki/xacro -->
-  <link name="ud_base_footprint">
+  <link name="base_footprint">
     <inertial>
       <mass value="0.1"/>
       <origin rpy="0 0 0" xyz="0 0 -0.05"/>
@@ -444,12 +337,12 @@
       </geometry>
     </collision>
   </link>
-  <joint name="ud_base_footprint_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0 0 0"/>
-    <child link="ud_base_link"/>
-    <parent link="ud_base_footprint"/>
+  <joint name="base_footprint_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.08"/>
+    <child link="base_link"/>
+    <parent link="base_footprint"/>
   </joint>
-  <link name="ud_base_link">
+  <link name="base_link">
     <inertial>
       <mass value="22.0"/>
       <origin xyz="0 0 0"/>
@@ -477,7 +370,7 @@
     <limit effort="30" velocity="10"/>
     <dynamics damping="1.0" friction="1.0"/>
     <safety_controller k_velocity="10.0"/>
-    <parent link="ud_base_link"/>
+    <parent link="base_link"/>
     <child link="caster_link_fl"/>
   </joint>
   <link name="caster_link_fl">
@@ -524,7 +417,7 @@
     <limit effort="30" velocity="10"/>
     <dynamics damping="1.0" friction="1.0"/>
     <safety_controller k_velocity="10.0"/>
-    <parent link="ud_base_link"/>
+    <parent link="base_link"/>
     <child link="caster_link_fr"/>
   </joint>
   <link name="caster_link_fr">
@@ -571,7 +464,7 @@
     <limit effort="30" velocity="10"/>
     <dynamics damping="1.0" friction="1.0"/>
     <safety_controller k_velocity="10.0"/>
-    <parent link="ud_base_link"/>
+    <parent link="base_link"/>
     <child link="caster_link_bl"/>
   </joint>
   <link name="caster_link_bl">
@@ -619,7 +512,7 @@
     <limit effort="30" velocity="10"/>
     <dynamics damping="1.0" friction="1.0"/>
     <safety_controller k_velocity="10.0"/>
-    <parent link="ud_base_link"/>
+    <parent link="base_link"/>
     <child link="caster_link_br"/>
   </joint>
   <link name="caster_link_br">
@@ -792,16 +685,122 @@
       <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
     </joint>
   </transmission>
-  <joint name="ud_base_link_to_bottom_pillars_link" type="fixed">
-    <origin rpy="0 0 0" xyz="0 0 0"/>
-    <parent link="ud_base_link"/>
-    <child link="bottom_pillars_link"/>
-  </joint>
-  <!-- joint for body and pantilt-->
+  <link name="ud_pt_base_link">
+    </link>
+  <link name="ud_pt_box_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.07 0.085 0.065"/>
+      </geometry>
+      <material name="gray"/>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0.0325"/>
+      <mass value="0.28"/>
+      <inertia ixx="0.00190" ixy="0.0" ixz="0.0" iyy="0.00202" iyz="0.0" izz="0.00152"/>
+    </inertial>
+  </link>
+  <link name="ud_pt_plate_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0.075 0 0"/>
+      <geometry>
+        <box size="0.35 0.095 0.003"/>
+      </geometry>
+      <material name="gray"/>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0.0015"/>
+      <mass value="0.08"/>
+      <inertia ixx="0.00150" ixy="0.0" ixz="0.0" iyy="0.02191" iyz="0.0" izz="0.02041"/>
+    </inertial>
+  </link>
+  <link name="left_pt_pillars">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.05 0.20"/>
+      </geometry>
+      <material name="gray"/>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0.01"/>
+      <mass value="0.06"/>
+      <inertia ixx="0.00708" ixy="0.0" ixz="0.0" iyy="0.00043" iyz="0.0" izz="0.00668"/>
+    </inertial>
+  </link>
+  <link name="right_pt_pillars">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.05 0.20"/>
+      </geometry>
+      <material name="gray"/>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0.01"/>
+      <mass value="0.06"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+  <link name="ud_pt_projector_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0.07 0.037 0"/>
+      <geometry>
+        <box size="0.24 0.17 0.07"/>
+      </geometry>
+      <material name="gray"/>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0.035"/>
+      <mass value="2"/>
+      <inertia ixx="0.00536" ixy="0.0" ixz="0.0" iyy="0.01441" iyz="0.0" izz="0.01041"/>
+    </inertial>
+  </link>
+  <link name="ud_pt_projector_optical_frame"/>
   <joint name="top_plate_link_to_ud_pt_base_link" type="fixed">
     <origin rpy="0 0 3.14" xyz="0 0 0.0325 "/>
     <parent link="top_plate_link"/>
     <child link="ud_pt_base_link"/>
+  </joint>
+  <joint name="ud_pt_base_joint" type="fixed">
+    <parent link="ud_pt_base_link"/>
+    <child link="ud_pt_box_link"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+  </joint>
+  <!--name of pan_joint and tilt_joint depend pantilt.yaml-->
+  <joint name="pan_joint" type="revolute">
+    <parent link="ud_pt_box_link"/>
+    <child link="ud_pt_plate_link"/>
+    <origin rpy="0 0 0" xyz="0 0 0.0325"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="41" lower="-2.9670" upper="2.9670" velocity="1"/>
+    <!--<safety_controller k_velocity="10" k_position="15" soft_lower_limit="-2.0" soft_upper_limit="0.5" />-->
+    <dynamics damping="0.7"/>
+  </joint>
+  <joint name="ud_pt_plate_link_to_left_pt_pillars" type="fixed">
+    <parent link="ud_pt_plate_link"/>
+    <child link="left_pt_pillars"/>
+    <origin rpy="0 0 0" xyz="-0.09 0 0.1"/>
+  </joint>
+  <joint name="ud_pt_plate_link_to_right_pt_pillars" type="fixed">
+    <parent link="ud_pt_plate_link"/>
+    <child link="right_pt_pillars"/>
+    <origin rpy="0 0 0" xyz="0.24 0 0.1"/>
+  </joint>
+  <joint name="tilt_joint" type="revolute">
+    <parent link="ud_pt_plate_link"/>
+    <child link="ud_pt_projector_link"/>
+    <origin rpy="0 0 0" xyz="0 0 0.17"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="10" lower="-0.2617" upper="1.3" velocity="1"/>
+    <!--<safety_controller k_velocity="10" k_position="15" soft_lower_limit="-2.0" soft_upper_limit="0.5" />-->
+    <dynamics damping="0.7"/>
+  </joint>
+  <joint name="ud_pt_projector_link_to_ud_pt_projector_optical_frame" type="fixed">
+    <parent link="ud_pt_projector_link"/>
+    <child link="ud_pt_projector_optical_frame"/>
+    <origin rpy="-1.56 0 3.14" xyz="0 -0.02 0"/>
   </joint>
   <joint name="front_laser_joint" type="fixed">
     <!--xacro:insert_block name="origin" /-->
@@ -935,13 +934,13 @@
   </joint>
   <link name="kinect2_rgb_optical_frame">
     <collision>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin rpy="0 0 0" xyz="-1.56 0 0"/>
       <geometry>
         <box size="0.25 0.065 0.068"/>
       </geometry>
     </collision>
     <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin rpy="-1.56 0 0" xyz="0 0 0"/>
       <geometry>
         <!-- these meshes were exported in mm, so scale back to m -->
         <mesh filename="package://ubiquitous_display_description/meshes/STL/kinect2_origin_on_rgb_optical_frame.stl" scale="0.001 0.001 0.001"/>
@@ -951,7 +950,7 @@
     </visual>
     <inertial>
       <mass value="0.2"/>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin rpy="0 0 0" xyz="-1.56 0 0"/>
       <inertia ixx="0.00147" ixy="0" ixz="0" iyy="0.01112" iyz="0" izz="0.01118"/>
     </inertial>
   </link>
@@ -977,7 +976,6 @@
   <gazebo reference="kinect2_ir_optical_frame">
     <sensor name="kinect2_ir_sensor" type="depth">
       <always_on>true</always_on>
-      <visualize>true</visualize>
       <update_rate>1.0</update_rate>
       <camera>
         <horizontal_fov>0.994837673637</horizontal_fov>
@@ -1021,7 +1019,6 @@
     <sensor name="kinect2_rgb_sensor" type="depth">
       <always_on>true</always_on>
       <update_rate>1.0</update_rate>
-      <visualize>true</visualize>
       <camera>
         <horizontal_fov>0.994837673637</horizontal_fov>
         <image>

@@ -22,7 +22,7 @@
     <color rgba="0.7 0.7 0.7 1.0" />
   </material>
 
-  <xacro:macro name="pantilt_name" params="name parent">
+  <xacro:macro name="pantilt_model" params="name parent">
 
     <link name="${name}base_link" >
     </link>
