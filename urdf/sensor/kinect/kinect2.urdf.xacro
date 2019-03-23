@@ -75,8 +75,8 @@
       <child link="kinect2_ir_optical_frame"/>
     </joint>
     <!--<xacro:camera_gazebo link_name="kinect2_rgb" frame_name="kinect2_rgb_optical_frame"/>-->
-    <xacro:kinect_ir_sensor_gazebo link_name="kinect2_ir" frame_name="kinect2_ir_optical_frame" camera_name="ir" />
-    <xacro:kinect_rgb_sensor_gazebo link_name="kinect2_rgb" frame_name="kinect2_rgb_optical_frame" camera_name="rgb" />
+    <xacro:kinect_ir_sensor_gazebo link_name="kinect2_ir" frame_name="kinect2_ir_optical_frame" camera_name="kinect2" />
+    <xacro:kinect_rgb_sensor_gazebo link_name="kinect2_rgb" frame_name="kinect2_rgb_optical_frame" camera_name="kinect2" />
   </xacro:macro>
 
 </robot>
