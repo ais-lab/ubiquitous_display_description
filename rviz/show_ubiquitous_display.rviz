@@ -160,11 +160,11 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        ud_base_footprint:
+        base_footprint:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        ud_base_link:
+        base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -287,9 +287,9 @@ Visualization Manager:
           Value: true
         top_plate_link:
           Value: true
-        ud_base_footprint:
+        base_footprint:
           Value: true
-        ud_base_link:
+        base_link:
           Value: true
         ud_pt_base_link:
           Value: true
@@ -313,8 +313,8 @@ Visualization Manager:
       Show Axes: true
       Show Names: false
       Tree:
-        ud_base_footprint:
-          ud_base_link:
+        base_footprint:
+          base_link:
             bottom_pillars_link:
               bottom_plate_link:
                 front_laser_adjuster_link:
@@ -357,7 +357,7 @@ Visualization Manager:
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: ud_base_footprint
+    Fixed Frame: base_footprint
     Frame Rate: 30
   Name: root
   Tools:
