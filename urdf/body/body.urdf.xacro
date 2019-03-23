@@ -85,6 +85,12 @@
   <!-- Bottom part -->
   <xacro:tower_template name="bottom" pillar_height="${bottom_pillar_height}"/>
 
+  <joint name="base_link_to_bottom_pillars_link" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="base_link"/>
+    <child link="bottom_pillars_link"/>
+  </joint>
+
   <!-- Middle part -->
   <xacro:tower_template name="middle" pillar_height="${middle_pillar_height}"/>
 
@@ -96,15 +102,18 @@
 
   <!-- Top part -->
   <xacro:tower_template name="top" pillar_height="${top_pillar_height}"/>
+
   <joint name="middle_plate_to_top_pillars_joint" type="fixed">
     <parent link="middle_plate_link"/>
     <child link="top_pillars_link"/>
   </joint>
 
+
   <!-- Laser adjusters -->
   <!-- Front -->
   <xacro:laser_adjuster_template name="front"/>
   <xacro:laser_adjuster_template_gazebo name="front"/>
+
   <joint name="front_laser_adjuster_joint" type="fixed">
     <origin xyz="${adjuster_offset_x} 0 0" rpy="0 0 0"/>
     <parent link="bottom_plate_link"/>
@@ -114,6 +123,7 @@
   <!-- Rear -->
   <xacro:laser_adjuster_template name="rear"/>
   <xacro:laser_adjuster_template_gazebo name="rear"/>
+
   <joint name="rear_laser_adjuster_joint" type="fixed">
   <origin xyz="${-adjuster_offset_x} 0 0" rpy="0 0 3.1415"/>
   <parent link="bottom_plate_link"/>

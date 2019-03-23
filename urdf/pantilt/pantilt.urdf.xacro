@@ -22,7 +22,7 @@
     <color rgba="0.7 0.7 0.7 1.0" />
   </material>
 
-  <xacro:macro name="pantilt_name" params="name">
+  <xacro:macro name="pantilt_name" params="name parent">
 
     <link name="${name}base_link" >
     </link>
@@ -119,7 +119,11 @@
 
     <link name="${name}projector_optical_frame"/>
 
-
+    <joint name="top_plate_link_to_ud_pt_base_link" type="fixed">
+      <origin xyz="0 0 0.0325 " rpy="0 0 3.14" />
+      <parent link="${parent}"/>
+      <child link="${name}base_link"/>
+    </joint>
 
     <joint name="${name}base_joint" type="fixed">
       <parent link="${name}base_link"/>
@@ -168,5 +172,4 @@
 
   </xacro:macro>
 
-  <xacro:pantilt_name name="ud_pt_"/>
 </robot>
