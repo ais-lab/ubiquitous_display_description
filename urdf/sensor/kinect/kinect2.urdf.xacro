@@ -26,7 +26,7 @@
 
     <link name="kinect2_rgb_optical_frame">
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="-1.56 0 0" rpy="0 0 0"/>
         <geometry>
           <box size="0.25 0.065 0.068"/>
         </geometry>
@@ -44,7 +44,7 @@
 
       <inertial>
         <mass value="0.2" />
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="-1.56 0 0" rpy="0 0 0"/>
         <inertia
           ixx="0.00147" ixy="0" ixz="0"
           iyy="0.01112" iyz="0"
@@ -54,7 +54,7 @@
 
     <link name="kinect2_ir_optical_frame">
       <visual>
-        <origin rpy="0.075 0 0" xyz="0 0 0"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
         <geometry>
           <sphere radius="0.0005"/>
         </geometry>
@@ -62,11 +62,13 @@
       </visual>
     </link>
 
+
     <joint name="kinect2_plate_to_kinect2_rgb_optical_frame" type="fixed">
-      <origin xyz="0.095 0 0.035 " rpy="0 0 0" />
+      <origin xyz="0.095 0 0.035 " rpy="-1.56 0 0" />
       <parent link="kinect2_plate_link"/>
       <child link="kinect2_rgb_optical_frame"/>
     </joint>
+
     <joint name="kinect2_rgb_optical_frame_to_kinect2_ir_optical_frame" type="fixed">
       <origin xyz="-0.0425 0 0 " rpy="0 0 0" />
       <parent link="kinect2_rgb_optical_frame"/>

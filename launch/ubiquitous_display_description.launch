@@ -5,10 +5,10 @@
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ubiquitous_display_description)/rviz/show_ubiquitous_display.rviz" required="true"/>
 
-  <group unless="$(arg pt)">
-    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
-    <rosparam param="source_list">["pantilt_joint_states"]</rosparam>
-  </group>
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+
+  <rosparam param="source_list">["pantilt_joint_states","ud_base_joint_states"]</rosparam>
+
 
   <param name="robot_description" command="$(find xacro)/xacro '$(find ubiquitous_display_description)/robots/ubiquitous_display.urdf.xacro'"/>
 </launch>

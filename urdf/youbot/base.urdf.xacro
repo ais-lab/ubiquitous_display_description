@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <robot name="base" xmlns:xacro="http://www.ros.org/wiki/xacro">
- 
+
   <!-- sensors -->
   <xacro:include filename="$(find ubiquitous_display_description)/urdf/youbot/base.gazebo.xacro"/>
   <xacro:include filename="$(find ubiquitous_display_description)/urdf/youbot/base.transmission.xacro"/>
-  
+
   <!-- simplified box collision geometry for base -->
   <xacro:property name="base_size_x" value="0.570"/>
   <xacro:property name="base_size_y" value="0.360"/>
@@ -62,7 +62,7 @@
 
 
     <joint name="${name}_footprint_joint" type="fixed">
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0.08" rpy="0 0 0"/>
       <child link="${name}_link"/>
       <parent link="${name}_footprint"/>
     </joint>

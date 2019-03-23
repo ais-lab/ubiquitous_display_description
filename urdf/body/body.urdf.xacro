@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
 
 <robot name="body" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find ubiquitous_display_description)/urdf/body/body.gazebo.xacro"/>
 
   <!-- Definition of various sizes -->
-  <xacro:property name="bottom_pillar_height" value="0.1"/>
+  <xacro:property name="bottom_pillar_height" value="0.14"/>
   <xacro:property name="middle_pillar_height" value="0.157"/>
   <xacro:property name="top_pillar_height" value="0.435"/>
   <xacro:property name="pillar_radius" value="0.01"/>
@@ -58,7 +59,9 @@
       <xacro:pillar_template height="${pillar_height}" origin_x="${pillar_offset_x}" origin_y="${-pillar_offset_y}"/>
       <xacro:pillar_template height="${pillar_height}" origin_x="${-pillar_offset_x}" origin_y="${-pillar_offset_y}"/>
     </link>
+    <xacro:pillar_template_gazebo name="${name}"/>
     <xacro:plate_template name="${name}"/>
+    <xacro:plate_template_gazebo name="${name}"/>
     <joint name="${name}_pillars_to_${name}_plate_joint" type="fixed">
       <parent link="${name}_pillars_link"/>
       <child link="${name}_plate_link"/>
@@ -84,6 +87,8 @@
 
   <!-- Middle part -->
   <xacro:tower_template name="middle" pillar_height="${middle_pillar_height}"/>
+
+
   <joint name="bottom_plate_to_middle_pillars_joint" type="fixed">
     <parent link="bottom_plate_link"/>
     <child link="middle_pillars_link"/>
@@ -99,6 +104,7 @@
   <!-- Laser adjusters -->
   <!-- Front -->
   <xacro:laser_adjuster_template name="front"/>
+  <xacro:laser_adjuster_template_gazebo name="front"/>
   <joint name="front_laser_adjuster_joint" type="fixed">
     <origin xyz="${adjuster_offset_x} 0 0" rpy="0 0 0"/>
     <parent link="bottom_plate_link"/>
@@ -107,6 +113,7 @@
 
   <!-- Rear -->
   <xacro:laser_adjuster_template name="rear"/>
+  <xacro:laser_adjuster_template_gazebo name="rear"/>
   <joint name="rear_laser_adjuster_joint" type="fixed">
   <origin xyz="${-adjuster_offset_x} 0 0" rpy="0 0 3.1415"/>
   <parent link="bottom_plate_link"/>
