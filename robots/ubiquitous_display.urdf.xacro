@@ -12,7 +12,7 @@
   <xacro:hokuyo_utm30lx_model name="front_laser" parent="front_laser_adjuster_link" />
   <xacro:hokuyo_utm30lx_model name="rear_laser" parent="rear_laser_adjuster_link" />
   <xacro:kinect2_model name="ud_pt_" parent="kinect2_plate_link"/>
-  <xacro:kinect2_for_gazebo name="" rgb_parent="kinect2_rgb_optical_frame" depth_parent="kinect2_ir_optical_frame"/>
+  <!--xacro:kinect2_for_gazebo_model name="" rgb_parent="kinect2_rgb_optical_frame" depth_parent="kinect2_ir_optical_frame"/-->
 
   <!-- =============== Gazebo =============== -->
   <gazebo>
