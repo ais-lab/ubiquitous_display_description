@@ -598,7 +598,7 @@
       <odometryTopic>odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
       <odometryRate>100.0</odometryRate>
-      <robotBaseFrame>ud_base_footprint</robotBaseFrame>
+      <robotBaseFrame>base_footprint</robotBaseFrame>
     </plugin>
   </gazebo>
   <!-- front left wheel -->
@@ -973,8 +973,36 @@
     <parent link="kinect2_rgb_optical_frame"/>
     <child link="kinect2_ir_optical_frame"/>
   </joint>
-  <gazebo reference="kinect2_ir_optical_frame">
-    <sensor name="kinect2_ir_sensor" type="depth">
+  <link name="camera_rgb_optical_frame">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.0005"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <link name="camera_ir_optical_frame">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.0005"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <joint name="kinect2_rgb_optical_frame_to_camera_rgb_optical_frame" type="fixed">
+    <origin rpy="1.56 0 0" xyz="0 0 0 "/>
+    <parent link="kinect2_rgb_optical_frame"/>
+    <child link="camera_rgb_optical_frame"/>
+  </joint>
+  <joint name="kinect2_ir_optical_frame_to_camera_ir_optical_frame" type="fixed">
+    <origin rpy="1.56 0 0" xyz="0 0 0 "/>
+    <parent link="kinect2_ir_optical_frame"/>
+    <child link="camera_ir_optical_frame"/>
+  </joint>
+  <gazebo reference="camera_ir_optical_frame">
+    <sensor name="camera_ir_sensor" type="depth">
       <always_on>true</always_on>
       <update_rate>1.0</update_rate>
       <camera>
@@ -989,17 +1017,17 @@
           <far>300</far>
         </clip>
       </camera>
-      <plugin filename="libgazebo_ros_openni_kinect.so" name="kinect2_ir_controller">
+      <plugin filename="libgazebo_ros_openni_kinect.so" name="camera_ir_controller">
         <baseline>0.2</baseline>
         <alwaysOn>true</alwaysOn>
         <updateRate>1.0</updateRate>
-        <cameraName>ir_ir</cameraName>
-        <imageTopicName>/ir/depth/image_raw</imageTopicName>
-        <cameraInfoTopicName>/ir/depth/camera_info</cameraInfoTopicName>
-        <depthImageTopicName>/ir/depth/image_raw</depthImageTopicName>
-        <depthImageCameraInfoTopicName>/ir/depth/camera_info</depthImageCameraInfoTopicName>
-        <pointCloudTopicName>/ir/depth/points</pointCloudTopicName>
-        <frameName>kinect2_ir_optical_frame</frameName>
+        <cameraName>camera_ir</cameraName>
+        <imageTopicName>/camera/depth/image_raw</imageTopicName>
+        <cameraInfoTopicName>/camera/depth/camera_info</cameraInfoTopicName>
+        <depthImageTopicName>/camera/depth/image_raw</depthImageTopicName>
+        <depthImageCameraInfoTopicName>/camera/depth/camera_info</depthImageCameraInfoTopicName>
+        <pointCloudTopicName>/camera/depth/points</pointCloudTopicName>
+        <frameName>camera_ir_optical_frame</frameName>
         <pointCloudCutoff>0.5</pointCloudCutoff>
         <distortionK1>0.00000001</distortionK1>
         <distortionK2>0.00000001</distortionK2>
@@ -1015,8 +1043,8 @@
     </sensor>
     <material value="Gazebo/Black"/>
   </gazebo>
-  <gazebo reference="kinect2_rgb_optical_frame">
-    <sensor name="kinect2_rgb_sensor" type="depth">
+  <gazebo reference="camera_rgb_optical_frame">
+    <sensor name="camera_rgb_sensor" type="depth">
       <always_on>true</always_on>
       <update_rate>1.0</update_rate>
       <camera>
@@ -1031,16 +1059,16 @@
           <far>300</far>
         </clip>
       </camera>
-      <plugin filename="libgazebo_ros_openni_kinect.so" name="kinect2_rgb_controller">
+      <plugin filename="libgazebo_ros_openni_kinect.so" name="camera_rgb_controller">
         <alwaysOn>true</alwaysOn>
         <updateRate>1.0</updateRate>
-        <cameraName>rgb_rgb</cameraName>
-        <imageTopicName>/rgb/rgb/image_raw</imageTopicName>
-        <cameraInfoTopicName>/rgb/rgb/camera_info</cameraInfoTopicName>
-        <depthImageTopicName>/rgb/depth/image_raw</depthImageTopicName>
-        <depthImageCameraInfoTopicName>/rgb/depth/camera_info</depthImageCameraInfoTopicName>
-        <pointCloudTopicName>/rgb/depth_registered/points</pointCloudTopicName>
-        <frameName>kinect2_rgb_optical_frame</frameName>
+        <cameraName>camera_rgb</cameraName>
+        <imageTopicName>/camera/rgb/image_raw</imageTopicName>
+        <cameraInfoTopicName>/camera/rgb/camera_info</cameraInfoTopicName>
+        <depthImageTopicName>/camera/depth/image_raw</depthImageTopicName>
+        <depthImageCameraInfoTopicName>/camera/depth/camera_info</depthImageCameraInfoTopicName>
+        <pointCloudTopicName>/camera/depth_registered/points</pointCloudTopicName>
+        <frameName>camera_rgb_optical_frame</frameName>
         <pointCloudCutoff>0.5</pointCloudCutoff>
         <distortionK1>0.00000001</distortionK1>
         <distortionK2>0.00000001</distortionK2>
