@@ -973,9 +973,12 @@
     <parent link="kinect2_rgb_optical_frame"/>
     <child link="kinect2_ir_optical_frame"/>
   </joint>
+  <gazebo reference="kinect2_rgb_optical_frame">
+    <material>Gazebo/Black</material>
+  </gazebo>
   <link name="camera_rgb_optical_frame">
     <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin rpy="0 0 0.05" xyz="0 0 0"/>
       <geometry>
         <sphere radius="0.0005"/>
       </geometry>
@@ -984,7 +987,7 @@
   </link>
   <link name="camera_ir_optical_frame">
     <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin rpy="0 0 0.05" xyz="0 0 0"/>
       <geometry>
         <sphere radius="0.0005"/>
       </geometry>
@@ -992,12 +995,12 @@
     </visual>
   </link>
   <joint name="kinect2_rgb_optical_frame_to_camera_rgb_optical_frame" type="fixed">
-    <origin rpy="1.56 0 0" xyz="0 0 0 "/>
+    <origin rpy="-1.56 0 -1.56" xyz="0 0 0 "/>
     <parent link="kinect2_rgb_optical_frame"/>
     <child link="camera_rgb_optical_frame"/>
   </joint>
   <joint name="kinect2_ir_optical_frame_to_camera_ir_optical_frame" type="fixed">
-    <origin rpy="1.56 0 0" xyz="0 0 0 "/>
+    <origin rpy="-1.56 0 -1.56" xyz="0 0 0 "/>
     <parent link="kinect2_ir_optical_frame"/>
     <child link="camera_ir_optical_frame"/>
   </joint>
@@ -1022,11 +1025,11 @@
         <alwaysOn>true</alwaysOn>
         <updateRate>1.0</updateRate>
         <cameraName>camera_ir</cameraName>
-        <imageTopicName>/camera/depth/image_raw</imageTopicName>
-        <cameraInfoTopicName>/camera/depth/camera_info</cameraInfoTopicName>
-        <depthImageTopicName>/camera/depth/image_raw</depthImageTopicName>
-        <depthImageCameraInfoTopicName>/camera/depth/camera_info</depthImageCameraInfoTopicName>
-        <pointCloudTopicName>/camera/depth/points</pointCloudTopicName>
+        <imageTopicName>/camera_ir/depth/image_raw</imageTopicName>
+        <cameraInfoTopicName>/camera_ir/depth/camera_info</cameraInfoTopicName>
+        <depthImageTopicName>/camera_ir/depth/image_raw</depthImageTopicName>
+        <depthImageCameraInfoTopicName>/camera_ir/depth/camera_info</depthImageCameraInfoTopicName>
+        <pointCloudTopicName>/camera_ir/depth/points</pointCloudTopicName>
         <frameName>camera_ir_optical_frame</frameName>
         <pointCloudCutoff>0.5</pointCloudCutoff>
         <distortionK1>0.00000001</distortionK1>
@@ -1041,7 +1044,7 @@
         <hackBaseline>0</hackBaseline>
       </plugin>
     </sensor>
-    <material value="Gazebo/Black"/>
+    <!--material>Gazebo/Black</material-->
   </gazebo>
   <gazebo reference="camera_rgb_optical_frame">
     <sensor name="camera_rgb_sensor" type="depth">
@@ -1063,11 +1066,11 @@
         <alwaysOn>true</alwaysOn>
         <updateRate>1.0</updateRate>
         <cameraName>camera_rgb</cameraName>
-        <imageTopicName>/camera/rgb/image_raw</imageTopicName>
-        <cameraInfoTopicName>/camera/rgb/camera_info</cameraInfoTopicName>
-        <depthImageTopicName>/camera/depth/image_raw</depthImageTopicName>
-        <depthImageCameraInfoTopicName>/camera/depth/camera_info</depthImageCameraInfoTopicName>
-        <pointCloudTopicName>/camera/depth_registered/points</pointCloudTopicName>
+        <imageTopicName>/camera_rgb/rgb/image_raw</imageTopicName>
+        <cameraInfoTopicName>/camera_rgb/rgb/camera_info</cameraInfoTopicName>
+        <depthImageTopicName>/camera_rgb/rgb/image_raw</depthImageTopicName>
+        <depthImageCameraInfoTopicName>/camera_rgb/rgb/camera_info</depthImageCameraInfoTopicName>
+        <pointCloudTopicName>/camera_rgb/rgb/points</pointCloudTopicName>
         <frameName>camera_rgb_optical_frame</frameName>
         <pointCloudCutoff>0.5</pointCloudCutoff>
         <distortionK1>0.00000001</distortionK1>
@@ -1082,7 +1085,7 @@
         <hackBaseline>0</hackBaseline>
       </plugin>
     </sensor>
-    <material value="Gazebo/Black"/>
+    <!--material>Gazebo/Black</material-->
   </gazebo>
   <!-- =============== Gazebo =============== -->
   <gazebo>

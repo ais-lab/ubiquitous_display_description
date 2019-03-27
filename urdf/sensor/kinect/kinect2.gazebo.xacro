@@ -23,7 +23,7 @@
           <baseline>0.2</baseline>
           <alwaysOn>true</alwaysOn>
           <updateRate>1.0</updateRate>
-          <cameraName>${camera_name}_ir</cameraName>
+          <cameraName>${camera_name}</cameraName>
           <imageTopicName>/${camera_name}/depth/image_raw</imageTopicName>
           <cameraInfoTopicName>/${camera_name}/depth/camera_info</cameraInfoTopicName>
           <depthImageTopicName>/${camera_name}/depth/image_raw</depthImageTopicName>
@@ -43,7 +43,7 @@
           <hackBaseline>0</hackBaseline>
         </plugin>
       </sensor>
-      <material value="Gazebo/Black"/>
+      <!--material>Gazebo/Black</material-->
     </gazebo>
   </xacro:macro>
 
@@ -67,12 +67,12 @@
 				<plugin name="${link_name}_controller" filename="libgazebo_ros_openni_kinect.so">
 					<alwaysOn>true</alwaysOn>
 					<updateRate>1.0</updateRate>
-					<cameraName>${camera_name}_rgb</cameraName>
+					<cameraName>${camera_name}</cameraName>
 					<imageTopicName>/${camera_name}/rgb/image_raw</imageTopicName>
 					<cameraInfoTopicName>/${camera_name}/rgb/camera_info</cameraInfoTopicName>
-					<depthImageTopicName>/${camera_name}/depth/image_raw</depthImageTopicName>
-					<depthImageCameraInfoTopicName>/${camera_name}/depth/camera_info</depthImageCameraInfoTopicName>
-					<pointCloudTopicName>/${camera_name}/depth_registered/points</pointCloudTopicName>
+					<depthImageTopicName>/${camera_name}/rgb/image_raw</depthImageTopicName>
+					<depthImageCameraInfoTopicName>/${camera_name}/rgb/camera_info</depthImageCameraInfoTopicName>
+					<pointCloudTopicName>/${camera_name}/rgb/points</pointCloudTopicName>
 					<frameName>${frame_name}</frameName>
 					<pointCloudCutoff>0.5</pointCloudCutoff>
 					<distortionK1>0.00000001</distortionK1>
@@ -87,7 +87,7 @@
 					<hackBaseline>0</hackBaseline>
 				</plugin>
 			</sensor>
-			<material value="Gazebo/Black"/>
+			<!--material>Gazebo/Black</material-->
 		</gazebo>
 	</xacro:macro>
 

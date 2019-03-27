@@ -73,6 +73,10 @@
       <parent link="kinect2_rgb_optical_frame"/>
       <child link="kinect2_ir_optical_frame"/>
     </joint>
+
+    <gazebo reference="kinect2_rgb_optical_frame">
+      <material>Gazebo/Black</material>
+    </gazebo>
   </xacro:macro>
 
 </robot>

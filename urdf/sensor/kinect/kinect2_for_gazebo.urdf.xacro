@@ -30,19 +30,19 @@
 
 
     <joint name="kinect2_rgb_optical_frame_to_${name}_rgb_optical_frame" type="fixed">
-      <origin xyz="0 0 0 " rpy="1.56 0 0" />
+      <origin xyz="0 0 0.05 " rpy="1.57 -1.57 -1.57" />
       <parent link="${rgb_parent}"/>
       <child link="${name}_rgb_optical_frame"/>
     </joint>
 
     <joint name="kinect2_ir_optical_frame_to_${name}_ir_optical_frame" type="fixed">
-      <origin xyz="0 0 0 " rpy="1.56 0 0" />
+      <origin xyz="0 0 0.05 " rpy="-1.57 -1.57 -1.57" />
       <parent link="${depth_parent}"/>
       <child link="${name}_ir_optical_frame"/>
     </joint>
     <!--<xacro:camera_gazebo link_name="kinect2_rgb" frame_name="kinect2_rgb_optical_frame"/>-->
-    <xacro:kinect_ir_sensor_gazebo link_name="${name}_ir" frame_name="${name}_ir_optical_frame" camera_name="${name}" />
-    <xacro:kinect_rgb_sensor_gazebo link_name="${name}_rgb" frame_name="${name}_rgb_optical_frame" camera_name="${name}" />
+    <xacro:kinect_ir_sensor_gazebo link_name="${name}_ir" frame_name="${name}_ir_optical_frame" camera_name="${name}_ir" />
+    <xacro:kinect_rgb_sensor_gazebo link_name="${name}_rgb" frame_name="${name}_rgb_optical_frame" camera_name="${name}_rgb" />
   </xacro:macro>
 
 </robot>
