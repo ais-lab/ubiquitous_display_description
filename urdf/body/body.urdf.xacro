@@ -89,6 +89,22 @@
   </xacro:macro>
 
   <xacro:macro name="base_scan_model" params="name parent">
+    <link name="${name}_laser_adjuster_link">
+      <!--visual>
+        <geometry>
+          <box size="${bar_len_x} ${bar_len_y} ${bar_len_z}"/>
+        </geometry>
+        <origin xyz="${-bar_len_x/2} ${adjuster_width/2} ${bar_len_z/2}"/>
+        <material name="white" />
+      </visual-->
+      <!--visual>
+        <geometry>
+          <box size="${bar_len_x} ${bar_len_y} ${bar_len_z}"/>
+        </geometry>
+        <origin xyz="${-bar_len_x/2} ${-adjuster_width/2} ${bar_len_z/2}"/>
+        <material name="white" />
+      </visual-->
+    </link>
     <joint name="${name}_scan_joint" type="fixed">
       <!--xacro:insert_block name="origin" /-->
       <origin xyz="0 0 0.067" rpy="0 0 0"/>
@@ -102,13 +118,13 @@
         <origin xyz="0 0 0" rpy="0 0 0" />
         <inertia ixx="2.632e-4" ixy="0" ixz="0" iyy="2.632e-4" iyz="0" izz="1.62e-4" />
       </inertial>
-      <visual>
+      <!--visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <sphere radius="0.01"/>
         </geometry>
         <material name="green"/>
-      </visual>
+      </visual-->
       <collision>
         <origin xyz="0 0 -0.0115" rpy="0 0 0" />
         <geometry>
@@ -174,8 +190,6 @@
   </joint>
 
   <!-- SCAN_FRAME for lrf_merger -->
-  <xacro:laser_adjuster_template name="base"/>
-  <xacro:laser_adjuster_template_gazebo name="base"/>
   <joint name="base_scan_adjuster_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <parent link="bottom_plate_link"/>
