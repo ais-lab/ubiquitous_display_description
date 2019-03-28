@@ -84,7 +84,7 @@
   <xacro:macro name="base_scan_model" params="name parent">
     <joint name="${name}_scan_joint" type="fixed">
       <!--xacro:insert_block name="origin" /-->
-      <origin xyz="-0.029 0 0.067" rpy="0 0 0"/>
+      <origin xyz="0 0 0.067" rpy="0 0 0"/>
       <parent link="${parent}"/>
       <child link="${name}_scan"/>
     </joint>
@@ -98,8 +98,9 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-        <!--mesh filename="package://ubiquitous_display_description/meshes/DAE/hokuyo_utm_30lx.dae"/-->
-      </geometry>
+          <sphere radius="0.01"/>
+        </geometry>
+        <material name="green"/>
       </visual>
       <collision>
         <origin xyz="0 0 -0.0115" rpy="0 0 0" />
@@ -108,6 +109,11 @@
         <!--<mesh filename="package://hector_sensors_description/meshes/hokuyo_utm30lx/hokuyo_utm_30lx.stl"/>-->
       </geometry>
       </collision>
+      <gazebo reference="${name}_scan">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <material>Gazebo/Green</material>
+      </gazebo>
     </link>
     <xacro:hokuyo_utm30lx_gazebo name="${name}" ray_count="1080" min_angle="-135" max_angle="135" />
   </xacro:macro>
@@ -163,6 +169,7 @@
 
   <!-- SCAN_FRAME for lrf_merger -->
   <xacro:laser_adjuster_template name="base"/>
+  <xacro:laser_adjuster_template_gazebo name="base"/>
   <joint name="base_scan_adjuster_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <parent link="bottom_plate_link"/>
