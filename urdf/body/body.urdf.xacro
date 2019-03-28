@@ -75,6 +75,13 @@
         <geometry>
           <box size="${bar_len_x} ${bar_len_y} ${bar_len_z}"/>
         </geometry>
+        <origin xyz="${-bar_len_x/2} ${adjuster_width/2} ${bar_len_z/2}"/>
+        <material name="white" />
+      </visual>
+      <visual>
+        <geometry>
+          <box size="${bar_len_x} ${bar_len_y} ${bar_len_z}"/>
+        </geometry>
         <origin xyz="${-bar_len_x/2} ${-adjuster_width/2} ${bar_len_z/2}"/>
         <material name="white" />
       </visual>
