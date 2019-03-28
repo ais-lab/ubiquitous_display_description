@@ -190,13 +190,11 @@
   </joint>
 
   <!-- SCAN_FRAME for lrf_merger -->
+  <xacro:base_scan_model name="base" parent="base_laser_adjuster_link"/>
   <joint name="base_scan_adjuster_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <parent link="bottom_plate_link"/>
     <child link="base_laser_adjuster_link"/>
   </joint>
-  <xacro:base_scan_model name="base" parent="base_laser_adjuster_link"/>
-
-
 
 </robot>
