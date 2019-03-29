@@ -23,7 +23,7 @@
       <child link="${camera_name}_plate_link" />
     </joint>
 
-    <link name="${camera_name}_rgb_optical_frame">
+    <link name="${camera_name}_base_frame">
       <collision>
         <origin xyz="-1.56 0 0" rpy="0 0 0"/>
         <geometry>
@@ -50,23 +50,31 @@
           izz="0.01118" />
       </inertial>
     </link>
+    <link name="${camera_name}_rgb_optical_frame">
+    </link>
 
     <link name="${camera_name}_ir_optical_frame">
     </link>
 
-    <joint name="${camera_name}_plate_to_${camera_name}_rgb_optical_frame" type="fixed">
-      <origin xyz="0.095 0 0.08 " rpy="0 -1.57 -1.57" />
+    <joint name="${camera_name}_plate_to_${camera_name}_base_frame" type="fixed">
+      <origin xyz="0.095 0 0.035 " rpy="-1.56 0 0" />
       <parent link="${camera_name}_plate_link"/>
+      <child link="${camera_name}_base_frame"/>
+    </joint>
+
+    <joint name="${camera_name}_base_frame_to_${camera_name}_rgb_optical_frame" type="fixed">
+      <origin xyz="0 0 0.03 " rpy="-1.57 -1.57 -1.57" />
+      <parent link="${camera_name}_base_frame"/>
       <child link="${camera_name}_rgb_optical_frame"/>
     </joint>
 
     <joint name="${camera_name}_rgb_optical_frame_to_${camera_name}_ir_optical_frame" type="fixed">
-      <origin xyz="-0.0425 0 0.045 " rpy="-1.57 -1.57 -1.57" />
+      <origin xyz="0 0 -0.0425" rpy="0 0 0" />
       <parent link="${camera_name}_rgb_optical_frame"/>
       <child link="${camera_name}_ir_optical_frame"/>
     </joint>
 
-    <gazebo reference="${camera_name}_rgb_optical_frame">
+    <gazebo reference="${camera_name}_base_frame">
       <mu1>0.2</mu1>
       <mu2>0.2</mu2>
       <material>Gazebo/Black</material>
