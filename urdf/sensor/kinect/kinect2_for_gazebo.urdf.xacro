@@ -25,7 +25,7 @@
 
     <link name="${camera_name}_base_frame">
       <collision>
-        <origin xyz="-1.56 0 0" rpy="0 0 0"/>
+        <origin rpy="-1.56 0 0" xyz="0 0 0"/>
         <geometry>
           <box size="0.25 0.065 0.068"/>
         </geometry>
@@ -43,7 +43,7 @@
 
       <inertial>
         <mass value="0.2" />
-        <origin xyz="-1.56 0 0" rpy="0 0 0"/>
+        <origin rpy="-1.56 0 0" xyz="0 0 0"/>
         <inertia
           ixx="0.00147" ixy="0" ixz="0"
           iyy="0.01112" iyz="0"
