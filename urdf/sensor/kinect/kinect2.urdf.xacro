@@ -52,13 +52,7 @@
     </link>
 
     <link name="kinect2_ir_optical_frame">
-      <visual>
-        <origin rpy="0 0 0" xyz="0 0 0"/>
-        <geometry>
-          <sphere radius="0.0005"/>
-        </geometry>
-        <material name="black"/>
-      </visual>
+
     </link>
 
 
