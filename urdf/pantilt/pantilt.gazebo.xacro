@@ -2,34 +2,16 @@
 
 <robot name="pantilt_gazebo" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-<xacro:macro name="pantilt_gazebo" params="name">  
+<xacro:macro name="pantilt_gazebo" params="name">
 
   <gazebo reference="${name}box_link">
-    <material>Gazebo/Grey</material>
+    <material>Gazebo/LightGrey</material>
   </gazebo>
 
   <gazebo reference="${name}plate_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
-    <material>Gazebo/Grey</material>
-  </gazebo>
-
-  <gazebo reference="${name}projector_link">
-    <mu1>0.2</mu1>
-    <mu2>0.2</mu2>
-    <material>Gazebo/Grey</material>
-  </gazebo>
-
-  <gazebo reference="left_pt_pillars">
-    <mu1>0.2</mu1>
-    <mu2>0.2</mu2>
-    <material>Gazebo/Grey</material>
-  </gazebo>
-
-  <gazebo reference="right_pt_pillars">
-    <mu1>0.2</mu1>
-    <mu2>0.2</mu2>
-    <material>Gazebo/Grey</material>
+    <material>Gazebo/LightGrey</material>
   </gazebo>
 
 </xacro:macro>

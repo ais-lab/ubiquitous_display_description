@@ -25,6 +25,6 @@
     <color rgba="0.0 0.0 0.8 1.0"/>
   </material>
   <material name="LightGrey">
-    <color rgba="0.82 0.82 0.82 1.0"/>
+    <color rgba="0.80 0.80 0.80 1.0"/>
   </material>
 </robot>
