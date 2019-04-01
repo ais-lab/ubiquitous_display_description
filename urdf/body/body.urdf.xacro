@@ -7,7 +7,7 @@
   <xacro:property name="bottom_pillar_height" value="0.14"/>
   <xacro:property name="middle_pillar_height" value="0.157"/>
   <xacro:property name="top_pillar_height" value="0.435"/>
-  <xacro:property name="pillar_radius" value="0.01"/>
+  <xacro:property name="pillar_radius" value="0.008"/>
   <xacro:property name="pillar_offset_x" value="0.21"/>
   <xacro:property name="pillar_offset_y" value="0.06"/>
   <xacro:property name="plate_len_x" value="0.5"/>
@@ -44,7 +44,8 @@
     <link name="${name}_plate_link">
       <visual>
         <geometry>
-          <box size="${plate_len_x} ${plate_len_y} ${plate_len_z}"/>
+          <!--box size="${plate_len_x} ${plate_len_y} ${plate_len_z}"/-->
+          <mesh filename="package://ubiquitous_display_description/meshes/STL/base_plate.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <origin xyz="0 0 -${plate_len_z/2}"/>
         <material name="white"/>
