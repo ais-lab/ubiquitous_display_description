@@ -4,18 +4,29 @@
 
 <xacro:macro name="pantilt_gazebo" params="name">
 
-  <gazebo reference="${name}box_link">
-    <material>Gazebo/LightGrey</material>
-  </gazebo>
-
-  <gazebo reference="${name}plate_link">
+  <gazebo reference="${name}base_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <material>Gazebo/LightGrey</material>
   </gazebo>
 
+  <gazebo reference="tilt_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/LightGrey</material>
+  </gazebo>
+  <gazebo reference="pan_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/LightGrey</material>
+  </gazebo>
+  <gazebo reference="projector_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/LightGrey</material>
+  </gazebo>
 </xacro:macro>
 
-  <xacro:pantilt_gazebo name="ud_pt_"/>
+  <xacro:pantilt_gazebo name="pantilt"/>
 
 </robot>

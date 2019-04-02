@@ -5,7 +5,7 @@
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kinect2">
 
-  <xacro:macro name="kinect2_model" params="name parent">
+  <xacro:macro name="kinect2_model" params="parent">
 
     <link name="kinect2_plate_link">
       <visual>
@@ -17,10 +17,10 @@
       </visual>
     </link>
 
-    <joint name="${name}projector_link_to_kinect2_plate_link" type="fixed">
-      <origin xyz="0.075 -0.11 0.135" rpy="0 0 3.14" />
-      <parent link="${name}projector_link" />
-      <child link="${parent}" />
+    <joint name="${parent}_to_kinect2_plate_link" type="fixed">
+      <origin xyz="-0.075 0.11 0.135" rpy="0 0 0" />
+      <parent link="${parent}" />
+      <child link="kinect2_plate_link" />
     </joint>
 
     <link name="kinect2_rgb_optical_frame">
