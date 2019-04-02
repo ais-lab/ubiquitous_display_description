@@ -6,8 +6,8 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kinect2_for_gazebo">
   <xacro:include filename="$(find ubiquitous_display_description)/urdf/sensor/kinect/kinect2.gazebo.xacro"/>
 
-  <xacro:macro name="kinect2_for_gazebo_model" params="name camera_name">
-    <link name="${camera_name}_plate_link">
+  <xacro:macro name="kinect2_for_gazebo_model" params="camera_name parent">
+    <link name="kinect2_plate_link">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
@@ -17,22 +17,22 @@
       </visual>
     </link>
 
-    <joint name="${name}projector_link_to_${camera_name}_plate_link" type="fixed">
-      <origin xyz="0.075 -0.11 0.135" rpy="0 0 3.14" />
-      <parent link="${name}projector_link" />
-      <child link="${camera_name}_plate_link" />
+    <joint name="${parent}_to_kinect2_plate_link" type="fixed">
+      <origin xyz="-0.075 0.11 0.135" rpy="0 0 0" />
+      <parent link="${parent}" />
+      <child link="kinect2_plate_link" />
     </joint>
 
     <link name="${camera_name}_base_frame">
       <collision>
-        <origin rpy="-1.56 0 0" xyz="0 0 0"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
         <geometry>
           <box size="0.25 0.065 0.068"/>
         </geometry>
       </collision>
 
       <visual>
-        <origin rpy="-1.56 0 0" xyz="0 0 0"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
         <geometry>
             <!-- these meshes were exported in mm, so scale back to m -->
           <mesh filename="package://ubiquitous_display_description/meshes/STL/kinect2_origin_on_rgb_optical_frame.stl" scale="0.001 0.001 0.001"/>
@@ -43,7 +43,7 @@
 
       <inertial>
         <mass value="0.2" />
-        <origin rpy="-1.56 0 0" xyz="0 0 0"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
         <inertia
           ixx="0.00147" ixy="0" ixz="0"
           iyy="0.01112" iyz="0"
@@ -56,20 +56,20 @@
     <link name="${camera_name}_ir_optical_frame">
     </link>
 
-    <joint name="${camera_name}_plate_to_${camera_name}_base_frame" type="fixed">
+    <joint name="kinect2_plate_link_to_${camera_name}_base_frame" type="fixed">
       <origin xyz="0.095 0 0.035 " rpy="-1.56 0 0" />
-      <parent link="${camera_name}_plate_link"/>
+      <parent link="kinect2_plate_link"/>
       <child link="${camera_name}_base_frame"/>
     </joint>
 
     <joint name="${camera_name}_base_frame_to_${camera_name}_rgb_optical_frame" type="fixed">
-      <origin xyz="0 0 0.03 " rpy="-1.57 -1.57 -1.57" />
+      <origin xyz="0 0 0.03 " rpy="0 -1.57 0" />
       <parent link="${camera_name}_base_frame"/>
       <child link="${camera_name}_rgb_optical_frame"/>
     </joint>
 
     <joint name="${camera_name}_rgb_optical_frame_to_${camera_name}_ir_optical_frame" type="fixed">
-      <origin xyz="0 0 -0.0425" rpy="0 0 0" />
+      <origin xyz="0 0 0.0425" rpy="0 0 0" />
       <parent link="${camera_name}_rgb_optical_frame"/>
       <child link="${camera_name}_ir_optical_frame"/>
     </joint>
