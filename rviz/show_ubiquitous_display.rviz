@@ -69,12 +69,12 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        bottom_pillars_link:
+        base_footprint:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        bottom_plate_link:
+        base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -83,107 +83,18 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         caster_link_br:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         caster_link_fl:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         caster_link_fr:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        front_laser_adjuster_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        front_laser_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        kinect2_ir_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        kinect2_plate_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        kinect2_rgb_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        left_pt_pillars:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        middle_pillars_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        middle_plate_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        rear_laser_adjuster_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        rear_laser_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        right_pt_pillars:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        top_pillars_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        top_plate_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        base_footprint:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        ud_pt_base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        ud_pt_box_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        ud_pt_plate_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        ud_pt_projector_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -204,6 +115,106 @@ Visualization Manager:
           Show Trail: false
           Value: true
         wheel_link_fr:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        bottom_pillars_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        bottom_plate_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        front_laser_adjuster_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        front_laser_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        rear_laser_adjuster_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        rear_laser_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        base_laser_adjuster_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        base_scan:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        middle_pillars_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        middle_plate_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        top_pillars_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        top_plate_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        pantilt_base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        pan_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tilt_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        projector_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        projector_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        kinect2_plate_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        kinect2_rgb_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        kinect2_ir_optical_frame:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -249,9 +260,9 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        bottom_pillars_link:
+        base_footprint:
           Value: true
-        bottom_plate_link:
+        base_link:
           Value: true
         caster_link_bl:
           Value: true
@@ -261,44 +272,6 @@ Visualization Manager:
           Value: true
         caster_link_fr:
           Value: true
-        front_laser_adjuster_link:
-          Value: true
-        front_laser_frame:
-          Value: true
-        kinect2_ir_optical_frame:
-          Value: true
-        kinect2_plate_link:
-          Value: true
-        kinect2_rgb_optical_frame:
-          Value: true
-        left_pt_pillars:
-          Value: true
-        middle_pillars_link:
-          Value: true
-        middle_plate_link:
-          Value: true
-        rear_laser_adjuster_link:
-          Value: true
-        rear_laser_frame:
-          Value: true
-        right_pt_pillars:
-          Value: true
-        top_pillars_link:
-          Value: true
-        top_plate_link:
-          Value: true
-        base_footprint:
-          Value: true
-        base_link:
-          Value: true
-        ud_pt_base_link:
-          Value: true
-        ud_pt_box_link:
-          Value: true
-        ud_pt_plate_link:
-          Value: true
-        ud_pt_projector_link:
-          Value: true
         wheel_link_bl:
           Value: true
         wheel_link_br:
@@ -306,6 +279,46 @@ Visualization Manager:
         wheel_link_fl:
           Value: true
         wheel_link_fr:
+          Value: true
+        bottom_pillars_link:
+          Value: true
+        bottom_plate_link:
+          Value: true
+        front_laser_adjuster_link:
+          Value: true
+        front_laser_frame:
+          Value: true
+        rear_laser_adjuster_link:
+          Value: true
+        rear_laser_frame:
+          Value: true
+        base_laser_adjuster_link:
+          Value: true
+        base_scan:
+          Value: true
+        middle_pillars_link:
+          Value: true
+        middle_plate_link:
+          Value: true
+        top_pillars_link:
+          Value: true
+        top_plate_link:
+          Value: true
+        pantilt_base_link:
+          Value: true
+        pan_link:
+          Value: true
+        tilt_link:
+          Value: true
+        projector_link:
+          Value: true
+        projector_optical_frame:
+          Value: true
+        kinect2_plate_link:
+          Value: true
+        kinect2_rgb_optical_frame:
+          Value: true
+        kinect2_ir_optical_frame:
           Value: true
       Marker Scale: 1
       Name: TF
@@ -315,30 +328,6 @@ Visualization Manager:
       Tree:
         base_footprint:
           base_link:
-            bottom_pillars_link:
-              bottom_plate_link:
-                front_laser_adjuster_link:
-                  front_laser_frame:
-                    {}
-                middle_pillars_link:
-                  middle_plate_link:
-                    top_pillars_link:
-                      top_plate_link:
-                        ud_pt_base_link:
-                          ud_pt_box_link:
-                            ud_pt_plate_link:
-                              left_pt_pillars:
-                                {}
-                              right_pt_pillars:
-                                {}
-                              ud_pt_projector_link:
-                                kinect2_plate_link:
-                                  kinect2_rgb_optical_frame:
-                                    kinect2_ir_optical_frame:
-                                      {}
-                rear_laser_adjuster_link:
-                  rear_laser_frame:
-                    {}
             caster_link_bl:
               wheel_link_bl:
                 {}
@@ -351,6 +340,31 @@ Visualization Manager:
             caster_link_fr:
               wheel_link_fr:
                 {}
+            bottom_pillars_link:
+              bottom_plate_link:
+                front_laser_adjuster_link:
+                  front_laser_frame:
+                    {}
+                rear_laser_adjuster_link:
+                  rear_laser_frame:
+                    {}
+                base_laser_adjuster_link:
+                  base_scan:
+                    {}
+              middle_pillars_link:
+                middle_plate_link:
+                  top_pillars_link:
+                    top_plate_link:
+                      pantilt_base_link:
+                        pan_link:
+                          tilt_link:
+                            projector_link:
+                              projector_optical_frame:
+                                {}
+                              kinect2_plate_link:
+                                kinect2_rgb_optical_frame:
+                                  kinect2_ir_optical_frame:
+                                    {}
       Update Interval: 0
       Value: true
   Enabled: true
