@@ -6,7 +6,7 @@
   <gazebo reference="${name}_plate_link">
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
-    <material>Gazebo/LightGrey</material>
+    <!--material>Gazebo/LightGrey</material-->
   </gazebo>
 </xacro:macro>
 

@@ -45,7 +45,7 @@
       <visual>
         <geometry>
           <!--box size="${plate_len_x} ${plate_len_y} ${plate_len_z}"/-->
-          <mesh filename="package://ubiquitous_display_description/meshes/STL/${name}_plate.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://ubiquitous_display_description/meshes/DAE/${name}_plate.dae" scale="0.001 0.001 0.001"/>
         </geometry>
         <origin xyz="0 0 -${plate_len_z/2}"/>
         <material name="white"/>
