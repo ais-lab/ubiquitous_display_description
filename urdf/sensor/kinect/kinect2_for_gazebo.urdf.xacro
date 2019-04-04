@@ -50,11 +50,14 @@
           izz="0.01118" />
       </inertial>
     </link>
-    <link name="${camera_name}_rgb_optical_frame">
+    <link name="${camera_name}_rgb_link">
     </link>
 
-    <link name="${camera_name}_ir_optical_frame">
+    <link name="${camera_name}_ir_link">
     </link>
+
+    <link name="kinect2_rgb_optical_frame"/>
+    <link name="kinect2_ir_optical_frame"/>
 
     <joint name="kinect2_plate_link_to_${camera_name}_base_frame" type="fixed">
       <origin xyz="0.095 0 0.035 " rpy="-1.56 0 0" />
@@ -62,18 +65,28 @@
       <child link="${camera_name}_base_frame"/>
     </joint>
 
-    <joint name="${camera_name}_base_frame_to_${camera_name}_rgb_optical_frame" type="fixed">
+    <joint name="${camera_name}_base_frame_to_${camera_name}_rgb_link" type="fixed">
       <origin xyz="0 0 0.03 " rpy="0 -1.57 0" />
       <parent link="${camera_name}_base_frame"/>
-      <child link="${camera_name}_rgb_optical_frame"/>
+      <child link="${camera_name}_rgb_link"/>
     </joint>
 
-    <joint name="${camera_name}_rgb_optical_frame_to_${camera_name}_ir_optical_frame" type="fixed">
+    <joint name="${camera_name}_rgb_link_to_${camera_name}_ir_link" type="fixed">
       <origin xyz="0 0 0.0425" rpy="0 0 0" />
-      <parent link="${camera_name}_rgb_optical_frame"/>
-      <child link="${camera_name}_ir_optical_frame"/>
+      <parent link="${camera_name}_rgb_link"/>
+      <child link="${camera_name}_ir_link"/>
     </joint>
 
+    <joint name="${camera_name}_rgb_link_to_kinect2_rgb_optical_frame" type="fixed">
+      <origin rpy="${M_PI/2} ${M_PI} ${M_PI/2}"/>
+      <parent link="${camera_name}_rgb_link"/>
+      <child link="kinect2_rgb_optical_frame"/>
+    </joint>
+    <joint name="${camera_name}_ir_link_to_kinect2_ir_optical_frame" type="fixed">
+      <origin rpy="${M_PI/2} ${M_PI} ${M_PI/2}"/>
+      <parent link="${camera_name}_ir_link"/>
+      <child link="kinect2_ir_optical_frame"/>
+    </joint>
     <gazebo reference="${camera_name}_base_frame">
       <mu1>0.2</mu1>
       <mu2>0.2</mu2>
@@ -81,8 +94,8 @@
     </gazebo>
 
     <!--<xacro:camera_gazebo link_name="kinect2_rgb" frame_name="kinect2_rgb_optical_frame"/>-->
-    <xacro:kinect_ir_sensor_gazebo link_name="${camera_name}_ir" frame_name="${camera_name}_ir_optical_frame" camera_name="${camera_name}_ir" />
-    <xacro:kinect_rgb_sensor_gazebo link_name="${camera_name}_rgb" frame_name="${camera_name}_rgb_optical_frame" camera_name="${camera_name}_rgb" />
+    <xacro:kinect_ir_sensor_gazebo link_name="${camera_name}_ir" frame_name="kinect2_ir_optical_frame" camera_name="${camera_name}_ir" />
+    <xacro:kinect_rgb_sensor_gazebo link_name="${camera_name}_rgb" frame_name="kinect2_rgb_optical_frame" camera_name="${camera_name}_rgb" />
   </xacro:macro>
 
 </robot>
