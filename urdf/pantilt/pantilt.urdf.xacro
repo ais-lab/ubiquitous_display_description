@@ -29,7 +29,7 @@
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <!--box size="0.07 0.085 0.065" /-->
-          <mesh filename="package://ubiquitous_display_description/meshes/DAE/ud_pt_base.dae" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://ubiquitous_display_description/meshes/DAE/pantilt_base.dae" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="gray"/>
       </visual>
@@ -48,7 +48,7 @@
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <!--box size="0.35 0.095 0.003" /-->
-          <mesh filename="package://ubiquitous_display_description/meshes/DAE/ud_pt_pan.dae" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://ubiquitous_display_description/meshes/DAE/pan_link.dae" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="gray"/>
       </visual>
@@ -67,7 +67,7 @@
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <!--box size="0.24 0.17 0.07" /-->
-          <mesh filename="package://ubiquitous_display_description/meshes/DAE/ud_pt_tilt.dae" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://ubiquitous_display_description/meshes/DAE/tilt_link.dae" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="gray"/>
       </visual>
@@ -86,7 +86,7 @@
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <!--box size="0.24 0.17 0.07" /-->
-          <mesh filename="package://ubiquitous_display_description/meshes/STL/projector.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://ubiquitous_display_description/meshes/DAE/projector.dae" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="gray"/>
       </visual>
