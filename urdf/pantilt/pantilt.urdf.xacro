@@ -135,7 +135,7 @@
       <child link="projector_link"/>
     </joint>
     <joint name="projector_link_to_projector_optical_frame" type="fixed">
-      <origin xyz="0 0.0805 0 " rpy="-1.57 0 0" />
+      <origin xyz="0 0 0 " rpy="-1.57 0 0" />
       <parent link="projector_link"/>
       <child link="projector_optical_frame"/>
     </joint>
