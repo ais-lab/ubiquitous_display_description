@@ -21,6 +21,11 @@
   <xacro:property name="hokuyo_offset_x" value="-0.05"/>
   <xacro:property name="hokuyo_offset_z" value="0.037"/>
 
+  <!-- for inertial tag -->
+  <xacro:property name="bottom_pillars_mass" value="0.203"/>
+  <xacro:property name="middle_pillars_mass" value="0.509"/>
+  <xacro:property name="top_pillars_mass" value="0.672"/>
+
   <!-- Definition of colors -->
   <material name="black">
     <color rgba="0 0 0 1"/>
@@ -38,6 +43,14 @@
       <origin xyz="${origin_x} ${origin_y} ${height/2}"/>
       <material name="black"/>
     </visual>
+    <!-- <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.5"/>
+      <inertia
+     ixx="2.666E+06" ixy="2.666E+06" ixz="2.124E+04"
+     iyx="2.666E+06" iyy="2.124E+04" iyz="2.666E+06"
+     izx="2.124E+04" izy="2.666E+06" izz="2.666E+06"/>
+    </inertial> -->
   </xacro:macro>
 
   <xacro:macro name="plate_template" params="name">
@@ -51,6 +64,14 @@
         <material name="white"/>
       </visual>
     </link>
+    <!-- <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1.0"/>
+      <inertia
+     ixx="3.167E+06" ixy="2.269E+07" ixz="1.953E+07"
+     iyx="2.269E+07" iyy="1.953E+07" iyz="3.167E+06"
+     izx="1.953E+07" izy="3.167E+06" izz="2.269E+07"/>
+    </inertial> -->
   </xacro:macro>
 
 
