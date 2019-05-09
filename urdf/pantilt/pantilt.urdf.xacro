@@ -101,6 +101,7 @@
     </link>
 
     <link name="projector_optical_frame"/>
+    <link name="projector_gazebo_optical_frame"/>
 
     <joint name="${parent}_to_${name}base_link" type="fixed">
       <origin xyz="0 0 0.033 " rpy="0 0 0" />
@@ -138,6 +139,11 @@
       <origin xyz="0 0 0 " rpy="-1.57 0 0" />
       <parent link="projector_link"/>
       <child link="projector_optical_frame"/>
+    </joint>
+    <joint name="projector_link_to_projector_gazebo_optical_frame" type="fixed">
+      <origin xyz="0 0 0 " rpy="1.57 0 0" />
+      <parent link="projector_link"/>
+      <child link="projector_gazebo_optical_frame"/>
     </joint>
 
   </xacro:macro>

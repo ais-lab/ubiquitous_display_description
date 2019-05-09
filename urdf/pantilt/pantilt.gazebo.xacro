@@ -25,8 +25,31 @@
     <mu2>0.2</mu2>
     <material>Gazebo/LightGrey</material>
   </gazebo>
-</xacro:macro>
 
-  <xacro:pantilt_gazebo name="pantilt"/>
+  <gazebo reference="projector_gazebo_optical_frame">
+    <projector name="ud_projector">
+      <!-- setting the pose will produce glitches even when attached to a revolute joint -->
+      <pose>0 0 0 0 0 0</pose>
+      <texture>pop_gazebo.png</texture>
+      <!--texture>stereo_projection_pattern_high_res_red.png</texture-->
+      <fov>0.7</fov>
+      <near_clip>0.1</near_clip>
+      <far_clip>5.0</far_clip>
+    </projector>
+  </gazebo>
+  <gazebo>
+     <plugin filename="libgazebo_my_projector.so" name="projector">
+         <projector>projector_gazebo_optical_frame/ud_projector</projector>
+         <alwaysOn>true</alwaysOn>
+         <updateRate>10.0</updateRate>
+         <!-- Apparently the 2 lines below does not affect anything -->
+         <textureName>pop_gazebo.png</textureName>
+         <filterTextureName>pop_gazebo.png</filterTextureName>
+         <!-- end -->
+         <textureTopicName>texture</textureTopicName>
+         <projectorTopicName>image</projectorTopicName>
+     </plugin>
+  </gazebo>
+</xacro:macro>
 
 </robot>

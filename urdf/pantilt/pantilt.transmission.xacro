@@ -28,6 +28,5 @@
 
 </xacro:macro>
 
-<xacro:ubiquitous_display_transmission />
 
 </robot>
