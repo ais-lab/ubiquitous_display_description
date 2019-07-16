@@ -38,7 +38,7 @@
     </projector>
   </gazebo>
   <gazebo>
-     <plugin filename="libgazebo_my_projector.so" name="projector">
+     <plugin filename="libgazebo_ros_projector.so" name="projector">
          <projector>projector_gazebo_optical_frame/ud_projector</projector>
          <alwaysOn>true</alwaysOn>
          <updateRate>10.0</updateRate>
