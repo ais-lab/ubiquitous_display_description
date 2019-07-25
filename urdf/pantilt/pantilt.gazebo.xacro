@@ -30,7 +30,7 @@
     <projector name="ud_projector">
       <!-- setting the pose will produce glitches even when attached to a revolute joint -->
       <pose>0 0 0 0 0 0</pose>
-      <texture>pop.png</texture>
+      <texture>pop_gazebo.png</texture>
       <!--texture>stereo_projection_pattern_high_res_red.png</texture-->
       <fov>0.7</fov>
       <near_clip>0.1</near_clip>
@@ -43,8 +43,8 @@
          <alwaysOn>true</alwaysOn>
          <updateRate>10.0</updateRate>
          <!-- Apparently the 2 lines below does not affect anything -->
-         <textureName>pop.png</textureName>
-         <filterTextureName>pop.png</filterTextureName>
+         <textureName>pop_gazebo.png</textureName>
+         <filterTextureName>pop_gazebo.png</filterTextureName>
          <!-- end -->
          <textureTopicName>/ubiquitous_display/texture</textureTopicName>
          <projectorTopicName>/ubiquitous_display/image</projectorTopicName>
