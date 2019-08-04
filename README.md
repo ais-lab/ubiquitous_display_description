@@ -1,26 +1,3 @@
 # ubiquitous_display_description
 
-convert xacro file to urdf file
-
-$roscd ubiquitous_display_description/robots
-
-$rosrun xacro xacro --inorder -o ubiquitous_display.urdf ubiquitous_display.urdf.xacro
-
-youbotとpantiltの実行方法
-
-$ roslaunch ubiquitous_display_description ubiquitous_display_description.launch 
-
-$ roslaunch ubiquitous_display_pantilt start_pantilt.launch 
-
-youBotのターミナル内で
-$ roslaunch youbot_driver_ros_interface youbot_driver_for_ud.launch
-
-$ rosrun tf static_transform_publisher 0 0 0 0 0 0 base_footprint ud_base_footprint 100
-
-TFについて
-
-pantiltのjoints_statesは"pantilt_joint_states"
-
-youBotのjoints_statesは"ud_base_joint_states"で
-
-jointを追跡させています
+このパッケージのインストール方法や実行方法は[こちら](https://github.com/ais-lab/ubiquitous_display_description/wiki)
