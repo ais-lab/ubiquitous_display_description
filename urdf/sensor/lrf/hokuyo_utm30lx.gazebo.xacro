@@ -37,13 +37,13 @@
     </gazebo>
   </xacro:macro>
 
-  <xacro:macro name="hokuyo_utm30lx_gpu" params="name ray_count min_angle max_angle">
+  <xacro:macro name="hokuyo_utm30lx_gpu" params="name ray_count min_angle max_angle visual">
 
     <gazebo reference="${name}_frame">
       <sensor type="gpu_ray" name="${name}">
         <update_rate>40</update_rate>
         <pose>0 0 0 0 0 0</pose>
-        <visualize>false</visualize>
+        <visualize>${visual}</visualize>
         <ray>
           <scan>
             <horizontal>
