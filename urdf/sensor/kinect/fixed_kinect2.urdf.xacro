@@ -6,8 +6,8 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kinect2_for_gazebo">
   <xacro:include filename="$(find ubiquitous_display_description)/urdf/sensor/kinect/kinect2.gazebo.xacro"/>
 
-  <xacro:macro name="kinect2_for_gazebo_model" params="camera_name parent">
-    <link name="kinect2_plate_link">
+  <xacro:macro name="fixed_kinect2_for_gazebo_model" params="camera_name parent">
+    <link name="fixed_kinect2_plate_link">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
@@ -17,10 +17,10 @@
       </visual>
     </link>
 
-    <joint name="${parent}_to_kinect2_plate_link" type="fixed">
+    <joint name="${parent}_to_fixed_kinect2_plate_link" type="fixed">
       <origin xyz="-0.075 0.11 0.135" rpy="0 0 0" />
       <parent link="${parent}" />
-      <child link="kinect2_plate_link" />
+      <child link="fixed_kinect2_plate_link" />
     </joint>
 
     <link name="${camera_name}_base_frame">
@@ -56,12 +56,12 @@
     <link name="${camera_name}_ir_link">
     </link>
 
-    <link name="kinect2_rgb_optical_frame"/>
-    <link name="kinect2_ir_optical_frame"/>
+    <link name="fixed_kinect2_rgb_optical_frame"/>
+    <link name="fixed_kinect2_ir_optical_frame"/>
 
-    <joint name="kinect2_plate_link_to_${camera_name}_base_frame" type="fixed">
+    <joint name="fixed_kinect2_plate_link_to_${camera_name}_base_frame" type="fixed">
       <origin xyz="0.095 0 0.035 " rpy="-1.56 0 0" />
-      <parent link="kinect2_plate_link"/>
+      <parent link="fixed_kinect2_plate_link"/>
       <child link="${camera_name}_base_frame"/>
     </joint>
 
@@ -77,15 +77,15 @@
       <child link="${camera_name}_ir_link"/>
     </joint>
 
-    <joint name="${camera_name}_rgb_link_to_kinect2_rgb_optical_frame" type="fixed">
+    <joint name="${camera_name}_rgb_link_to_fixed_kinect2_rgb_optical_frame" type="fixed">
       <origin rpy="1.57 1.57 1.57"/>
       <parent link="${camera_name}_rgb_link"/>
-      <child link="kinect2_rgb_optical_frame"/>
+      <child link="fixed_kinect2_rgb_optical_frame"/>
     </joint>
-    <joint name="${camera_name}_ir_link_to_kinect2_ir_optical_frame" type="fixed">
+    <joint name="${camera_name}_ir_link_to_fixed_kinect2_ir_optical_frame" type="fixed">
       <origin rpy="1.57 1.57 1.57"/>
       <parent link="${camera_name}_ir_link"/>
-      <child link="kinect2_ir_optical_frame"/>
+      <child link="fixed_kinect2_ir_optical_frame"/>
     </joint>
     <gazebo reference="${camera_name}_base_frame">
       <mu1>0.2</mu1>
@@ -93,9 +93,13 @@
       <material>Gazebo/Black</material>
     </gazebo>
 
+	<gazebo>
+	    <static>true</static>
+	</gazebo>
+
     <!--<xacro:camera_gazebo link_name="kinect2_rgb" frame_name="kinect2_rgb_optical_frame"/>-->
-    <xacro:kinect_ir_sensor_gazebo link_name="${camera_name}_ir" frame_name="kinect2_ir_optical_frame" camera_name="${camera_name}_ir" />
-    <xacro:kinect_rgb_sensor_gazebo link_name="${camera_name}_rgb" frame_name="kinect2_rgb_optical_frame" camera_name="${camera_name}_rgb" />
+    <xacro:kinect_ir_sensor_gazebo link_name="${camera_name}_ir" frame_name="fixed_kinect2_ir_optical_frame" camera_name="${camera_name}_ir" />
+    <xacro:kinect_rgb_sensor_gazebo link_name="${camera_name}_rgb" frame_name="fixed_kinect2_rgb_optical_frame" camera_name="${camera_name}_rgb" />
   </xacro:macro>
 
 </robot>

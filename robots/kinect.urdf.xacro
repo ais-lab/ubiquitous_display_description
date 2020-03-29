@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<robot name="ubiquitous_display" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find ubiquitous_display_description)/urdf/sensor/kinect/fixed_kinect2.urdf.xacro"/>
+
+
+  <link name="footprint"/>
+  
+  <xacro:fixed_kinect2_for_gazebo_model camera_name="fixed_camera" parent="footprint"/>
+
+</robot>
