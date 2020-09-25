@@ -24,8 +24,8 @@
           <alwaysOn>true</alwaysOn>
           <updateRate>30.0</updateRate>
           <cameraName>${camera_name}</cameraName>
-          <imageTopicName>depth/image_raw</imageTopicName>
-          <cameraInfoTopicName>depth/camera_info</cameraInfoTopicName>
+          <imageTopicName>rgb/image_raw</imageTopicName>
+          <cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>
           <depthImageTopicName>depth/image_raw</depthImageTopicName>
           <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
           <pointCloudTopicName>depth/points</pointCloudTopicName>
@@ -70,8 +70,8 @@
 					<cameraName>${camera_name}</cameraName>
 					<imageTopicName>rgb/image_raw</imageTopicName>
 					<cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>
-					<depthImageTopicName>rgb/image_raw</depthImageTopicName>
-					<depthImageCameraInfoTopicName>rgb/camera_info</depthImageCameraInfoTopicName>
+					<depthImageTopicName>depth/image_raw</depthImageTopicName>
+					<depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
 					<pointCloudTopicName>rgb/points</pointCloudTopicName>
 					<frameName>${frame_name}</frameName>
 					<pointCloudCutoff>0.5</pointCloudCutoff>
