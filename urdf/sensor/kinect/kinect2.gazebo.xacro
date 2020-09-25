@@ -24,11 +24,11 @@
           <alwaysOn>true</alwaysOn>
           <updateRate>30.0</updateRate>
           <cameraName>${camera_name}</cameraName>
-          <imageTopicName>/${camera_name}/depth/image_raw</imageTopicName>
-          <cameraInfoTopicName>/${camera_name}/depth/camera_info</cameraInfoTopicName>
-          <depthImageTopicName>/${camera_name}/depth/image_raw</depthImageTopicName>
-          <depthImageCameraInfoTopicName>/${camera_name}/depth/camera_info</depthImageCameraInfoTopicName>
-          <pointCloudTopicName>/${camera_name}/depth/points</pointCloudTopicName>
+          <imageTopicName>depth/image_raw</imageTopicName>
+          <cameraInfoTopicName>depth/camera_info</cameraInfoTopicName>
+          <depthImageTopicName>depth/image_raw</depthImageTopicName>
+          <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
+          <pointCloudTopicName>depth/points</pointCloudTopicName>
           <frameName>${frame_name}</frameName>
           <pointCloudCutoff>0.5</pointCloudCutoff>
           <distortionK1>0.00000001</distortionK1>
@@ -68,11 +68,11 @@
 					<alwaysOn>true</alwaysOn>
 					<updateRate>30.0</updateRate>
 					<cameraName>${camera_name}</cameraName>
-					<imageTopicName>/${camera_name}/rgb/image_raw</imageTopicName>
-					<cameraInfoTopicName>/${camera_name}/rgb/camera_info</cameraInfoTopicName>
-					<depthImageTopicName>/${camera_name}/rgb/image_raw</depthImageTopicName>
-					<depthImageCameraInfoTopicName>/${camera_name}/rgb/camera_info</depthImageCameraInfoTopicName>
-					<pointCloudTopicName>/${camera_name}/rgb/points</pointCloudTopicName>
+					<imageTopicName>rgb/image_raw</imageTopicName>
+					<cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>
+					<depthImageTopicName>rgb/image_raw</depthImageTopicName>
+					<depthImageCameraInfoTopicName>rgb/camera_info</depthImageCameraInfoTopicName>
+					<pointCloudTopicName>rgb/points</pointCloudTopicName>
 					<frameName>${frame_name}</frameName>
 					<pointCloudCutoff>0.5</pointCloudCutoff>
 					<distortionK1>0.00000001</distortionK1>
