@@ -46,8 +46,8 @@
          <textureName>test.png</textureName>
          <filterTextureName>test.png</filterTextureName>
          <!-- end -->
-         <textureTopicName>/ubiquitous_display/texture</textureTopicName>
-         <projectorTopicName>/ubiquitous_display/image</projectorTopicName>
+         <textureTopicName>texture</textureTopicName>
+         <projectorTopicName>image</projectorTopicName>
      </plugin>
   </gazebo>
 </xacro:macro>
